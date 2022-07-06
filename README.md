@@ -12,7 +12,7 @@ A Spotify playlist creation application for Spotify Premium users who frequently
 
 Users can create playlists of singles, all songs including albums, etc. by simply searching for an artist.
 
-> Sriveは、Spotify のスマートフォン版のアプリケーションだと同じアーティストのシングル曲やアルバム曲だけを連続して再生できない問題を解決します。
+> Srive は、Spotify のスマートフォン版のアプリケーションだと同じアーティストのシングル曲やアルバム曲だけを連続して再生できない問題を解決します。
 > 
 > ドライブ中など、スマートフォンを操作できない状況で Spotify をよく利用する Spotify Premium ユーザー向けの、Spotify のプレイリスト作成アプリケーションです。
 > 
