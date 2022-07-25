@@ -1,7 +1,7 @@
 # Srive
-It is very easy to create only singles or only albums playlists for Spotify artists.
+It is very easy to create only singles or only albums playlists for Spofity artists.
 
-> Spotify のアーティストに対して、シングルだけ、アルバムだけのプレイリストを簡単に作成することができます。
+> Spofity のアーティストに対して、シングルだけ、アルバムだけのプレイリストを簡単に作成することができます。
 
 
 # What is Srive?
