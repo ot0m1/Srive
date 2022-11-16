@@ -70,8 +70,8 @@ const Home: NextPage = () => {
         </section>
       </main>
 
-      <footer className="ontainer mx-auto footer text-center text-xs">
-        <div className="mb-1">
+      <footer className="mx-auto footer text-center text-xs">
+        <div className="mb-1 flex justify-center">
           <Image src='/srive_gray_e2e8f0_22do.png' alt='srive-logo' width={26} height={26}/>
         </div>
         <ul className="flex mb-2 text-slate-200/80 font-medium">
