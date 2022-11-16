@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import ResultArtists from './resultArtists'
-import Playlist from './playlist'
+import Playlist from './playList'
 import React, { useState, useContext } from 'react'
 import { TracksContext } from '../sriveContexts'
 import { useSession } from 'next-auth/react'
