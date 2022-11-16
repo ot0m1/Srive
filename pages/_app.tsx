@@ -15,7 +15,6 @@ function Init() {
   return null
 }
 
-
 function App({
   Component,
   pageProps: { session, ...pageProps } }: AppProps,

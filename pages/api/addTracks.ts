@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import axios from 'axios'
 
-const Hudler = async (req: NextApiRequest, res: NextApiResponse) => {
+const Hundler = async (req: NextApiRequest, res: NextApiResponse) => {
   const body = req.body
   const playListId = body.playListId
   const uris = body.uris.uris
@@ -31,4 +31,4 @@ const addTracks = async(headers: {[key: string]: string}, playListId: string, ur
   })
 }
 
-export default Hudler
+export default Hundler

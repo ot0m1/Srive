@@ -8,6 +8,7 @@ const Playlist: NextPage = () => {
   const {tracks, getTracks} = useContext(TracksContext)
   const [radioValue, setRadioValue] = useState('single')
   const [playListId, setPlayListId] = useState('')
+  const [currentArtistName, settArtistName] = useState(tracks.artist.name)
   const session = useSession()
   const token = session.data.token.accessToken
 
@@ -16,7 +17,7 @@ const Playlist: NextPage = () => {
   }
 
   const artistImage = () => {
-    return (tracks.artist.images.length > 2) ? tracks.artist.images[2].url : '/no-image.png'
+    return (tracks.artist.images.length > 2) ? tracks.artist.images[2].url : '/no_image_4.png'
   }
 
   const createPlaylist = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -31,7 +32,7 @@ const Playlist: NextPage = () => {
     }
 
       const JSONdata = JSON.stringify(data)
-      const endpoint = '/api/playlist'
+      const endpoint = '/api/playList'
       const options = {
         method: 'POST',
         headers: {
@@ -161,7 +162,7 @@ const Playlist: NextPage = () => {
             {valueList.map((item, index) => (
               <li
                 key={index}
-                className="mb-3 w-[180px] container mx-auto border border-slate-100/60 rounded"
+                className="mb-4 w-[200px] container mx-auto border border-slate-100/60 rounded"
               >
                 <input
                   type="radio"
@@ -173,17 +174,32 @@ const Playlist: NextPage = () => {
                   />
                 <label
                   htmlFor={item.value}
-                  className="inline-block w-full cursor-pointer rounded hover:bg-slate-200/20 peer-checked:bg-slate-200/30"
+                  className="py-[5px] inline-block w-full cursor-pointer rounded opacity-50 hover:bg-slate-200/20
+                    peer-checked:bg-slate-200/30 peer-checked:opacity-100 peer-checked:font-semibold"
                 >
-                  {item.name}
+                  &nbsp;&nbsp;{item.name}
                 </label>
               </li>
             ))}
             <br />
             <button type="submit"
-              className="w-[240px] py-2 border border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/30"
+              className="w-[260px] py-4 border border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/30"
+              onClick={() => settArtistName(tracks.artist.name)}
             >
-              Create a playlist
+              <ul className="flex justify-center">
+                <li className="mr-2">
+                  <Image
+                    className="opacity-75"
+                    src='/Spotify_Icon_CMYK_White.png'
+                    alt='spotify-logo'
+                    width={26}
+                    height={26}
+                  />
+                </li>
+                <li className="font-bold">
+                  Create a playlist
+                </li>
+              </ul>
             </button>
           </form>
         </ul>
@@ -192,51 +208,56 @@ const Playlist: NextPage = () => {
   }
 
   const Profile = () => {
-    if (hasSinglesOrAlbums()) {
-      return (
-        <div className="container mx-auto my-2 w-full md:max-w-[520px]">
-            <p className="text-center">Create playlist with the artist you searched for</p>
-            <div className="flex justify-center mt-1">
-              <div className="mr-3 my-3 w-[96px]">
-                <a
-                  href={tracks.artist.external_urls.spotify}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block relative max-w-full h-[96px]"
-                >
-                  <Image
-                    src={artistImage()}
-                    alt='artist-image'
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </a>
-              </div>
-              <div className="flex items-center">
-                <p className="text-left">
-                  <a className="font-semibold">{tracks.artist.name}</a>
-                  <br />
-                  {tracks.singles.length} Singles {tracks.albums.length} Albums
-                </p>
-              </div>
-            </div>
+    return (
+      <div className="container mx-auto my-2 w-full md:max-w-[520px]">
+        <div className="flex justify-center mt-1">
+          <div className="mr-3 my-3 w-[96px]">
+            <a
+              href={tracks.artist.external_urls.spotify}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block relative max-w-full h-[96px]"
+            >
+              <Image
+                src={artistImage()}
+                alt='artist-image'
+                layout="fill"
+                objectFit="contain"
+              />
+            </a>
           </div>
-        )
-    } else {
-      return <></>
-    }
+          <div className="flex items-center">
+            <p className="text-left">
+              <a className="font-semibold">{tracks.artist.name}</a>
+              <br />
+              {tracks.singles.length} Singles {tracks.albums.length} Albums
+            </p>
+          </div>
+        </div>
+        <p
+          className="text-center mx-auto max-w-[500px]">
+          {hasSinglesOrAlbums() ?
+            <span>Create playlist with the artist you searched for</span>
+            :
+            <span>No songs found. It is possible that the artist participated only in the compilation album or it could be a public playlist.</span>            
+          }
+        </p>
+      </div>
+    )
   }
 
   return (
-    <span>
+    <>
       <Profile />
       { tracks.singles.length === 50 || tracks.albums.length === 50 ?
-        <p className="text-xs -mt-5 mb-4">For the purposes of the specifications, a maximum of 50 singles and 50 albums each can be added to the playlist.</p>
+        <p className="text-sm mt-1 mb-4 max-w-90% mx-auto text-center">
+          Due to API specifications, a maximum of 50 singles and 50 albums each can be added to the playlist.
+        </p>
         :
         <></>
       }
       { hasSinglesOrAlbums() && <PlaylistForm /> }
-      { playListUrl() != '' &&
+      { playListUrl() != '' &&  (currentArtistName === tracks.artist.name) &&
         <p>
             <a
               href={ playListUrl() }
@@ -244,14 +265,26 @@ const Playlist: NextPage = () => {
               rel="noopener noreferrer"
             >
             <button
-              className="w-[240px] py-2 mt-5 px-1 border border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/30"
+              className="w-[260px] py-4 mt-5 mb-8 px-1 border border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/30"
             >
-              Open a playlist in Spotify
+              <ul className="flex justify-center">
+                <li className="mr-2">
+                  <Image
+                    src='/Spotify_Icon_CMYK_Green.png'
+                    alt='spotify-logo'
+                    width={26}
+                    height={26}
+                  />
+                </li>
+                <li className="font-bold">
+                  Open a playlist in Spotify
+                </li>
+              </ul>
             </button>
           </a>
         </p>
       }
-    </span>
+    </>
   )
 }
 
