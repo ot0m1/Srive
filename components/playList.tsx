@@ -31,7 +31,7 @@ const Playlist: NextPage = () => {
     }
 
       const JSONdata = JSON.stringify(data)
-      const endpoint = '/api/playlist'
+      const endpoint = '/api/playList'
       const options = {
         method: 'POST',
         headers: {
