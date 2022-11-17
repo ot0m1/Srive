@@ -8,3 +8,8 @@ export const TracksContext = createContext({} as {
   }
   getTracks: MouseEventHandler<HTMLParagraphElement>
 })
+
+export const SearchingContext = createContext({} as {
+  searching: boolean
+  setSearching: Function
+})

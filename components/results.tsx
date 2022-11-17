@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import ResultArtists from './resultArtists'
 import Playlist from './playList'
 import React, { useState, useContext } from 'react'
-import { TracksContext } from '../sriveContexts'
+import { SearchingContext, TracksContext } from '../sriveContexts'
 import { useSession } from 'next-auth/react'
 
 type Props = {
@@ -18,6 +18,7 @@ const Results: NextPage<Props> = ({ artists }) => {
 
   const session = useSession()
   const token = session.data.token.accessToken
+  const {searching, setSearching} = useContext(SearchingContext)
 
   const getTracks = async (event: React.MouseEvent<HTMLInputElement>) => {
     const data = {
