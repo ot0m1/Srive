@@ -61,7 +61,7 @@ const Results: NextPage<Props> = ({ artists }) => {
           })}
         </ul>
       </div>
-      <Playlist />
+      {tracks && <Playlist />}
     </TracksContext.Provider>
   )
 }

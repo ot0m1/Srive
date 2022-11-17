@@ -174,9 +174,11 @@ const Playlist: NextPage = () => {
                   />
                 <label
                   htmlFor={item.value}
-                  className="py-[5px] inline-block w-full cursor-pointer rounded opacity-50 hover:bg-slate-200/20 peer-checked:bg-slate-200/30 peer-checked:opacity-100 peer-checked:font-semibold"
+                  className="py-[5px] inline-block w-full cursor-pointer rounded opacity-50 hover:bg-slate-200/20
+                    peer-checked:bg-slate-200/30 peer-checked:opacity-100 peer-checked:font-semibold
+                    before:content-['○'] peer-checked:before:content-['●']"
                 >
-                  {item.name}
+                  &nbsp;&nbsp;{item.name}
                 </label>
               </li>
             ))}
@@ -206,76 +208,42 @@ const Playlist: NextPage = () => {
   }
 
   const Profile = () => {
-    if (hasSinglesOrAlbums()) {
-      return (
-        <div className="container mx-auto my-2 w-full md:max-w-[520px]">
-            <p className="text-center">Create playlist with the artist you searched for</p>
-            <div className="flex justify-center mt-1">
-              <div className="mr-3 my-3 w-[96px]">
-                <a
-                  href={tracks.artist.external_urls.spotify}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block relative max-w-full h-[96px]"
-                >
-                  <Image
-                    src={artistImage()}
-                    alt='artist-image'
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </a>
-              </div>
-              <div className="flex items-center">
-                <p className="text-left">
-                  <a className="font-semibold">{tracks.artist.name}</a>
-                  <br />
-                  {tracks.singles.length} Singles {tracks.albums.length} Albums
-                </p>
-              </div>
-            </div>
+    return (
+      <div className="container mx-auto my-2 w-full md:max-w-[520px]">
+        <div className="flex justify-center mt-1">
+          <div className="mr-3 my-3 w-[96px]">
+            <a
+              href={tracks.artist.external_urls.spotify}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block relative max-w-full h-[96px]"
+            >
+              <Image
+                src={artistImage()}
+                alt='artist-image'
+                layout="fill"
+                objectFit="contain"
+              />
+            </a>
           </div>
-        )
-    } else {
-      // return searching ? <p>No songs found. It is possible that they are only participating in a compilation album.</p> : <></>
-      return <></>
-    }
-    // return (
-    //   <div className="container mx-auto my-2 w-full md:max-w-[520px]">
-    //     <p
-    //       className="text-center">
-    //       {hasSinglesOrAlbums() ?
-    //         <span>Create playlist with the artist you searched for</span>
-    //         :
-    //         <span>No songs found. It is possible that they are only participating in a compilation album.</span>
-    //       }
-    //     </p>
-    //     <div className="flex justify-center mt-1">
-    //       <div className="mr-3 my-3 w-[96px]">
-    //         <a
-    //           href={tracks.artist.external_urls.spotify}
-    //           target="_blank"
-    //           rel="noopener noreferrer"
-    //           className="block relative max-w-full h-[96px]"
-    //         >
-    //           <Image
-    //             src={artistImage()}
-    //             alt='artist-image'
-    //             layout="fill"
-    //             objectFit="contain"
-    //           />
-    //         </a>
-    //       </div>
-    //       <div className="flex items-center">
-    //         <p className="text-left">
-    //           <a className="font-semibold">{tracks.artist.name}</a>
-    //           <br />
-    //           {tracks.singles.length} Singles {tracks.albums.length} Albums
-    //         </p>
-    //       </div>
-    //     </div>
-    //   </div>
-    // )
+          <div className="flex items-center">
+            <p className="text-left">
+              <a className="font-semibold">{tracks.artist.name}</a>
+              <br />
+              {tracks.singles.length} Singles {tracks.albums.length} Albums
+            </p>
+          </div>
+        </div>
+        <p
+          className="text-center mx-auto max-w-[500px]">
+          {hasSinglesOrAlbums() ?
+            <span>Create playlist with the artist you searched for</span>
+            :
+            <span>No songs found. It is possible that the artist participated only in the compilation album or it could be a public playlist.</span>            
+          }
+        </p>
+      </div>
+    )
   }
 
   return (
@@ -283,7 +251,7 @@ const Playlist: NextPage = () => {
       <Profile />
       { tracks.singles.length === 50 || tracks.albums.length === 50 ?
         <p className="text-xs -mt-3 mb-4 max-w-90% mx-auto text-center">
-          For the purposes of the specifications, a maximum of 50 singles and 50 albums each can be added to the playlist.
+          Due to API specifications, a maximum of 50 singles and 50 albums each can be added to the playlist.
         </p>
         :
         <></>
