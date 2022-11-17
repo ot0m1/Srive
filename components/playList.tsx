@@ -173,7 +173,7 @@ const Playlist: NextPage = () => {
                   />
                 <label
                   htmlFor={item.value}
-                  className="py-[5px] inline-block w-full cursor-pointer rounded hover:bg-slate-200/20 peer-checked:bg-slate-200/30"
+                  className="py-[5px] inline-block w-full cursor-pointer rounded opacity-60 hover:bg-slate-200/20 peer-checked:bg-slate-200/30 peer-checked:opacity-100 peer-checked:font-semibold"
                 >
                   {item.name}
                 </label>
@@ -193,7 +193,7 @@ const Playlist: NextPage = () => {
                     height={26}
                   />
                 </li>
-                <li>
+                <li className="font-bold">
                   Create a playlist
                 </li>
               </ul>
@@ -259,19 +259,18 @@ const Playlist: NextPage = () => {
               rel="noopener noreferrer"
             >
             <button
-              className="w-[260px] py-4 mt-5 px-1 border border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/30"
+              className="w-[260px] py-4 mt-5 mb-4 px-1 border border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/30"
             >
               <ul className="flex justify-center">
                 <li className="mr-2">
                   <Image
-                    // className=""
                     src='/Spotify_Icon_CMYK_Green.png'
                     alt='spotify-logo'
                     width={26}
                     height={26}
                   />
                 </li>
-                <li>
+                <li className="font-bold">
                   Open a playlist in Spotify
                 </li>
               </ul>
