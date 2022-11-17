@@ -71,14 +71,17 @@ const Home: NextPage = () => {
       </main>
 
       <footer className="mx-auto footer text-center text-xs">
-        <div className="mb-1 flex justify-center">
+        {/* <div className="mb-1 flex justify-center">
           <Image src='/srive_gray_e2e8f0_22do.png' alt='srive-logo' width={26} height={26}/>
-        </div>
-        <ul className="flex mb-2 text-slate-200/80 font-medium">
+        </div> */}
+        <ul className="flex mb-3 text-slate-200/80 font-medium">
           <li className="mx-1">GitHub</li>
           <li className="mx-1">Twitter</li>
           <li className="mx-1">Blog</li>
         </ul>
+        {/* <div className="mb-2 flex justify-center">
+          ot0m1
+        </div> */}
       </footer>
     </div>
   )

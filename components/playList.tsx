@@ -259,7 +259,7 @@ const Playlist: NextPage = () => {
               rel="noopener noreferrer"
             >
             <button
-              className="w-[260px] py-4 mt-5 mb-4 px-1 border border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/30"
+              className="w-[260px] py-4 mt-5 mb-8 px-1 border border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/30"
             >
               <ul className="flex justify-center">
                 <li className="mr-2">

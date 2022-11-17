@@ -34,7 +34,6 @@ const PageWithJSbasedForm = () => {
 
   return (
     <div className="container mx-auto">
-      {/* <p className="text-center">Search Artists</p> */}
       <form onSubmit={handleSubmit} className="text-center">
         <div className="container mx-auto mt-1 mb-8 w-[70%] md:w-[60%] md:max-w-[320px] border border-slate-100/60 bg-slate-200/10 rounded">
           <input
@@ -50,7 +49,12 @@ const PageWithJSbasedForm = () => {
             title="Click this button to search for an artist"
             className="mt-[4px] mr-[2px] border-none bg-transparent rounded"
           >
-            <Image src='/iconmonstr-search-thin-240.png' alt='srive-logo' width={16} height={16}/>
+            <Image
+              src='/iconmonstr-search-thin-240.png'
+              alt='srive-logo'
+              width={16}
+              height={16}
+            />
           </button>
         </div>
       </form>
