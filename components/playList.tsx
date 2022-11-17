@@ -181,9 +181,22 @@ const Playlist: NextPage = () => {
             ))}
             <br />
             <button type="submit"
-              className="w-[240px] py-2 border border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/30"
+              className="w-[260px] py-4 border border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/30"
             >
-              Create a playlist
+              <ul className="flex justify-center">
+                <li className="mr-2">
+                  <Image
+                    className="opacity-75"
+                    src='/Spotify_Icon_CMYK_White.png'
+                    alt='spotify-logo'
+                    width={26}
+                    height={26}
+                  />
+                </li>
+                <li>
+                  Create a playlist
+                </li>
+              </ul>
             </button>
           </form>
         </ul>
@@ -246,9 +259,22 @@ const Playlist: NextPage = () => {
               rel="noopener noreferrer"
             >
             <button
-              className="w-[240px] py-2 mt-5 px-1 border border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/30"
+              className="w-[260px] py-4 mt-5 px-1 border border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/30"
             >
-              Open a playlist in Spotify
+              <ul className="flex justify-center">
+                <li className="mr-2">
+                  <Image
+                    // className=""
+                    src='/Spotify_Icon_CMYK_Green.png'
+                    alt='spotify-logo'
+                    width={26}
+                    height={26}
+                  />
+                </li>
+                <li>
+                  Open a playlist in Spotify
+                </li>
+              </ul>
             </button>
           </a>
         </p>
