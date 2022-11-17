@@ -27,7 +27,7 @@ const Home: NextPage = () => {
         <section className="container mx-auto w-[90%] text-center">
           {/* <Link href="/"> */}
           {/* <Link href="/" onClick={() => router.reload()}> */}
-            <ul className="flex justify-center">
+            <ul className="flex justify-center mb-6">
               <li>
                 <div
                   className="cursor-pointer mt-[18px] mr-[12px]"

@@ -161,7 +161,7 @@ const Playlist: NextPage = () => {
             {valueList.map((item, index) => (
               <li
                 key={index}
-                className="mb-3 w-[180px] container mx-auto border border-slate-100/60 rounded"
+                className="mb-4 w-[200px] container mx-auto border border-slate-100/60 rounded"
               >
                 <input
                   type="radio"
@@ -173,7 +173,7 @@ const Playlist: NextPage = () => {
                   />
                 <label
                   htmlFor={item.value}
-                  className="inline-block w-full cursor-pointer rounded hover:bg-slate-200/20 peer-checked:bg-slate-200/30"
+                  className="py-[5px] inline-block w-full cursor-pointer rounded hover:bg-slate-200/20 peer-checked:bg-slate-200/30"
                 >
                   {item.name}
                 </label>
@@ -231,7 +231,9 @@ const Playlist: NextPage = () => {
     <span>
       <Profile />
       { tracks.singles.length === 50 || tracks.albums.length === 50 ?
-        <p className="text-xs -mt-5 mb-4">For the purposes of the specifications, a maximum of 50 singles and 50 albums each can be added to the playlist.</p>
+        <p className="text-xs -mt-3 mb-4 max-w-90% mx-auto text-center">
+          For the purposes of the specifications, a maximum of 50 singles and 50 albums each can be added to the playlist.
+        </p>
         :
         <></>
       }
