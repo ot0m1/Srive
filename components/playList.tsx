@@ -8,6 +8,7 @@ const Playlist: NextPage = () => {
   const {tracks, getTracks} = useContext(TracksContext)
   const [radioValue, setRadioValue] = useState('single')
   const [playListId, setPlayListId] = useState('')
+  const [currentArtistName, settArtistName] = useState(tracks.artist.name)
   const session = useSession()
   const token = session.data.token.accessToken
 
@@ -183,6 +184,7 @@ const Playlist: NextPage = () => {
             <br />
             <button type="submit"
               className="w-[260px] py-4 border border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/30"
+              onClick={() => settArtistName(tracks.artist.name)}
             >
               <ul className="flex justify-center">
                 <li className="mr-2">
@@ -255,7 +257,7 @@ const Playlist: NextPage = () => {
         <></>
       }
       { hasSinglesOrAlbums() && <PlaylistForm /> }
-      { playListUrl() != '' &&
+      { playListUrl() != '' &&  (currentArtistName === tracks.artist.name) &&
         <p>
             <a
               href={ playListUrl() }
