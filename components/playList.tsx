@@ -175,8 +175,7 @@ const Playlist: NextPage = () => {
                 <label
                   htmlFor={item.value}
                   className="py-[5px] inline-block w-full cursor-pointer rounded opacity-50 hover:bg-slate-200/20
-                    peer-checked:bg-slate-200/30 peer-checked:opacity-100 peer-checked:font-semibold
-                    before:content-['○'] peer-checked:before:content-['●']"
+                    peer-checked:bg-slate-200/30 peer-checked:opacity-100 peer-checked:font-semibold"
                 >
                   &nbsp;&nbsp;{item.name}
                 </label>
