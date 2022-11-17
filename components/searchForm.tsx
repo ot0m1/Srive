@@ -32,6 +32,7 @@ const PageWithJSbasedForm = () => {
     const response = await fetch(endpoint, options)
     const results = await response.json()
 
+    setSearching(true)
     setResults(results.data)
   }
 
@@ -52,7 +53,6 @@ const PageWithJSbasedForm = () => {
               type="submit"
               title="Click this button to search for an artist"
               className="mt-[4px] mr-[2px] border-none bg-transparent rounded"
-              onClick={() => {setSearching(true)}}
             >
               <Image
                 src='/iconmonstr-search-thin-240.png'
