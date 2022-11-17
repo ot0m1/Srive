@@ -17,7 +17,7 @@ const Playlist: NextPage = () => {
   }
 
   const artistImage = () => {
-    return (tracks.artist.images.length > 2) ? tracks.artist.images[2].url : '/no-image.png'
+    return (tracks.artist.images.length > 2) ? tracks.artist.images[2].url : '/no_image_4.png'
   }
 
   const createPlaylist = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -250,7 +250,7 @@ const Playlist: NextPage = () => {
     <>
       <Profile />
       { tracks.singles.length === 50 || tracks.albums.length === 50 ?
-        <p className="text-xs -mt-3 mb-4 max-w-90% mx-auto text-center">
+        <p className="text-sm mt-1 mb-4 max-w-90% mx-auto text-center">
           Due to API specifications, a maximum of 50 singles and 50 albums each can be added to the playlist.
         </p>
         :

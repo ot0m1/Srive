@@ -12,7 +12,7 @@ const ResultArtists: NextPage<Props> = ({ artist, index }) => {
   const {tracks, getTracks} = useContext(TracksContext)
 
   const artistImage = () => {
-    return (artist.images.length > 2) ? artist.images[2].url : '/no-image.png'
+    return (artist.images.length > 2) ? artist.images[2].url : '/no_image_4.png'
   }
 
   return (
