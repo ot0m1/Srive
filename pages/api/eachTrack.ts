@@ -11,10 +11,10 @@ const EachTrack = async (req: NextApiRequest, res: NextApiResponse) => {
   res.status(200).json({ uris: uris })
 }
 
-const getTrackId = async (token, ids) => {
-  let albums = []
-  let tracks = []
-  let uris = []
+const getTrackId = async (token: any, ids: any) => {
+  let albums: any = []
+  let tracks: any = []
+  let uris: any = []
 
   // id（=アルバム（シングルもアルバムという定義）の数だけ繰り返し
   for (const id of ids) {

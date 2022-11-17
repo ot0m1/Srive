@@ -16,7 +16,7 @@ const Results: NextPage<Props> = ({ artists }) => {
     'artist': [],
   })
 
-  const session = useSession()
+  const session: any = useSession()
   const token = session.data.token.accessToken
 
   const getTracks = async (event: React.MouseEvent<HTMLInputElement>) => {
