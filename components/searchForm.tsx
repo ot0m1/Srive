@@ -3,7 +3,6 @@ import Results from './results'
 import NoResults from './noResults'
 import Image from 'next/image'
 import { useSession } from 'next-auth/react'
-import { SearchingContext } from '../sriveContexts'
 
 const PageWithJSbasedForm = () => {
   const [artists, setResults] = useState([])
@@ -37,36 +36,34 @@ const PageWithJSbasedForm = () => {
   }
 
   return (
-    <SearchingContext.Provider value={{searching, setSearching}}>
-      <div className="container mx-auto">
-        <form onSubmit={handleSubmit} className="text-center">
-          <div className="container mx-auto mt-1 mb-8 w-[70%] md:w-[60%] md:max-w-[320px] border border-slate-100/60 bg-slate-200/10 rounded">
-            <input
-              type="text"
-              id="name"
-              name="artist"
-              required
-              placeholder="Search Artists"
-              className="w-[90%] pb-[1px] border-none bg-transparent focus:outline-none caret-slate-200"
+    <div className="container mx-auto">
+      <form onSubmit={handleSubmit} className="text-center">
+        <div className="container mx-auto mt-1 mb-8 w-[70%] md:w-[60%] md:max-w-[320px] border border-slate-100/60 bg-slate-200/10 rounded">
+          <input
+            type="text"
+            id="name"
+            name="artist"
+            required
+            placeholder="Search Artists"
+            className="w-[90%] pb-[1px] border-none bg-transparent focus:outline-none caret-slate-200"
+          />
+          <button
+            type="submit"
+            title="Click this button to search for an artist"
+            className="mt-[4px] mr-[2px] border-none bg-transparent rounded"
+          >
+            <Image
+              src='/iconmonstr-search-thin-240.png'
+              alt='srive-logo'
+              width={16}
+              height={16}
             />
-            <button
-              type="submit"
-              title="Click this button to search for an artist"
-              className="mt-[4px] mr-[2px] border-none bg-transparent rounded"
-            >
-              <Image
-                src='/iconmonstr-search-thin-240.png'
-                alt='srive-logo'
-                width={16}
-                height={16}
-              />
-            </button>
-          </div>
-        </form>
-        {searching && artists.length > 0 && <Results artists={artists} />}
-        {searching && artists.length === 0 && <NoResults /> }
-      </div>
-    </SearchingContext.Provider>
+          </button>
+        </div>
+      </form>
+      {searching && artists.length > 0 && <Results artists={artists} />}
+      {searching && artists.length === 0 && <NoResults /> }
+    </div>
   )
 }
 

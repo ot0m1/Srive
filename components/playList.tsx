@@ -1,6 +1,6 @@
 import type { NextPage } from 'next' 
 import React, { useContext, useState } from 'react'
-import { SearchingContext, TracksContext } from '../sriveContexts'
+import { TracksContext } from '../sriveContexts'
 import Image from 'next/image'
 import { useSession } from 'next-auth/react'
 
@@ -10,7 +10,6 @@ const Playlist: NextPage = () => {
   const [playListId, setPlayListId] = useState('')
   const session = useSession()
   const token = session.data.token.accessToken
-  const {searching, setSearching} = useContext(SearchingContext)
 
   const hasSinglesOrAlbums = () => {
     return (tracks.singles.length > 0 || tracks.albums.length) > 0 ? true : false

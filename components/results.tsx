@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import ResultArtists from './resultArtists'
 import Playlist from './playList'
 import React, { useState, useContext } from 'react'
-import { SearchingContext, TracksContext } from '../sriveContexts'
+import { TracksContext } from '../sriveContexts'
 import { useSession } from 'next-auth/react'
 
 type Props = {
