@@ -41,7 +41,7 @@ async function refreshAccessToken(token: any) {
   }
 }
 
-export const authOptions = {
+export const authOptions: any = {
   providers: [
     SpotifyProvider({
       clientId: process.env.CLIENT_ID || '',
@@ -53,7 +53,7 @@ export const authOptions = {
     }),
   ],
   callbacks: {
-    async jwt({ token, account }) {
+    async jwt({ token, account }: {token: any, account: any}) {
       if (account) {
         token.id = account.id
         token.accessToken = account.access_token
@@ -62,7 +62,7 @@ export const authOptions = {
 
       return Date.now() < token.accessTokenExpires ? token : refreshAccessToken(token)
     },
-    async session({ session, token }) {
+    async session({ session, token }: {session: any, token: any}) {
       session.token = token
 
       return session

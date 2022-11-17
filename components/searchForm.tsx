@@ -6,7 +6,7 @@ import { useSession } from 'next-auth/react'
 
 const PageWithJSbasedForm = () => {
   const [artists, setResults] = useState([])
-  const session = useSession()
+  const session: any = useSession()
   const token = session.data.token.accessToken
   const [searching, setSearching] = useState(false)
 

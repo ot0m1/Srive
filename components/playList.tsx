@@ -9,7 +9,7 @@ const Playlist: NextPage = () => {
   const [radioValue, setRadioValue] = useState('single')
   const [playListId, setPlayListId] = useState('')
   const [currentArtistName, settArtistName] = useState(tracks.artist.name)
-  const session = useSession()
+  const session: any = useSession()
   const token = session.data.token.accessToken
 
   const hasSinglesOrAlbums = () => {
