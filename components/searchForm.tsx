@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import Results from './results'
+import NoResults from './noResults'
 import Image from 'next/image'
 import { useSession } from 'next-auth/react'
 import { SearchingContext } from '../sriveContexts'
@@ -46,7 +47,6 @@ const PageWithJSbasedForm = () => {
               required
               placeholder="Search Artists"
               className="w-[90%] pb-[1px] border-none bg-transparent focus:outline-none caret-slate-200"
-              // onChange={() => {setSearching(false)}}
             />
             <button
               type="submit"
@@ -64,7 +64,7 @@ const PageWithJSbasedForm = () => {
           </div>
         </form>
         {searching && artists.length > 0 && <Results artists={artists} />}
-        {searching && artists.length === 0 && <span>No Results</span> }
+        {searching && artists.length === 0 && <NoResults /> }
       </div>
     </SearchingContext.Provider>
   )
