@@ -162,7 +162,7 @@ const Playlist: NextPage = () => {
             {valueList.map((item, index) => (
               <li
                 key={index}
-                className="mb-4 w-[200px] container mx-auto border border-slate-100/60 rounded"
+                className="mb-4 w-[200px] container mx-auto rounded"
               >
                 <input
                   type="radio"
@@ -174,8 +174,8 @@ const Playlist: NextPage = () => {
                   />
                 <label
                   htmlFor={item.value}
-                  className="py-[5px] inline-block w-full cursor-pointer rounded opacity-50 hover:bg-slate-200/20
-                    peer-checked:bg-slate-200/30 peer-checked:opacity-100 peer-checked:font-semibold"
+                  className="py-[5px] inline-block w-full cursor-pointer rounded opacity-50 hover:bg-slate-200/20 border
+                    peer-checked:bg-slate-200/30 peer-checked:opacity-100 peer-checked:font-semibold peer-checked:border-slate-100"
                 >
                   &nbsp;&nbsp;{item.name}
                 </label>
@@ -183,7 +183,7 @@ const Playlist: NextPage = () => {
             ))}
             <br />
             <button type="submit"
-              className="w-[260px] py-4 border border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/30"
+              className="w-[260px] py-4 border border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/30 hover:border-slate-100"
               onClick={() => settArtistName(tracks.artist.name)}
             >
               <ul className="flex justify-center">
@@ -265,7 +265,7 @@ const Playlist: NextPage = () => {
               rel="noopener noreferrer"
             >
             <button
-              className="w-[260px] py-4 mt-5 mb-8 px-1 border border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/30"
+              className="w-[260px] py-4 mt-5 mb-8 px-1 border border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/30 hover:border-slate-100"
             >
               <ul className="flex justify-center">
                 <li className="mr-2">

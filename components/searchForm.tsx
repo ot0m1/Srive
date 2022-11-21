@@ -38,19 +38,19 @@ const PageWithJSbasedForm = () => {
   return (
     <div className="container mx-auto">
       <form onSubmit={handleSubmit} className="text-center">
-        <div className="container mx-auto mt-1 mb-8 w-[70%] md:w-[60%] md:max-w-[320px] border border-slate-100/60 bg-slate-200/10 rounded">
+        <div className="container mx-auto mt-1 mb-8 w-[70%] md:w-[60%] md:max-w-[320px] border border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/30 hover:border-slate-100">
           <input
             type="text"
             id="name"
             name="artist"
             required
             placeholder="Search Artists"
-            className="w-[90%] pb-[1px] border-none bg-transparent focus:outline-none caret-slate-200"
+            className="w-[90%] pb-[1px] border-none bg-transparent caret-slate-200 focus:outline-none"
           />
           <button
             type="submit"
             title="Click this button to search for an artist"
-            className="mt-[4px] mr-[2px] border-none bg-transparent rounded"
+            className="mt-[6px] mr-[2px] border-none bg-transparent rounded"
           >
             <Image
               src='/iconmonstr-search-thin-240.png'
