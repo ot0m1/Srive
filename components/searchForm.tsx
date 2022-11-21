@@ -38,7 +38,8 @@ const PageWithJSbasedForm = () => {
   return (
     <div className="container mx-auto">
       <form onSubmit={handleSubmit} className="text-center">
-        <div className="container mx-auto mt-1 mb-8 w-[70%] md:w-[60%] md:max-w-[320px] border border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/30 hover:border-slate-100">
+        <div className="container mx-auto mt-1 mb-8 w-[70%] md:w-[60%] md:max-w-[320px]
+          border border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/30 hover:border-slate-100 hover:text-slate-50">
           <input
             type="text"
             id="name"

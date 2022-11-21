@@ -12,7 +12,8 @@ const LogIn = () => {
         </p>
       </div>
       <button
-        className="container cursor-pointer max-w-[140px] mx-auto mt-1 mb-4 border border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/20 hover:border-slate-100"
+        className="container cursor-pointer max-w-[140px] mx-auto mt-1 mb-4 border
+          border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/20 hover:border-slate-100 hover:text-slate-50"
         onClick={() => signIn('spotify')}
       >
         Log in to Spotify
