@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useSession } from 'next-auth/react'
 
 const Playlist: NextPage = () => {
-  const {tracks, getTracks} = useContext(TracksContext)
+  const {tracks} = useContext(TracksContext)
   const [radioValue, setRadioValue] = useState('single')
   const [playListId, setPlayListId] = useState('')
   const [currentArtistName, settArtistName] = useState(tracks.artist.name)
@@ -17,7 +17,7 @@ const Playlist: NextPage = () => {
   }
 
   const artistImage = () => {
-    return (tracks.artist.images.length > 2) ? tracks.artist.images[2].url : '/no_image_4.png'
+    return (tracks.artist.images.length > 2) ? tracks.artist.images[2].url : '/no_image.png'
   }
 
   const createPlaylist = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -175,15 +175,16 @@ const Playlist: NextPage = () => {
                 <label
                   htmlFor={item.value}
                   className="py-[5px] inline-block w-full cursor-pointer rounded opacity-50 hover:bg-slate-200/20 border
-                    peer-checked:bg-slate-200/30 peer-checked:opacity-100 peer-checked:font-semibold peer-checked:border-slate-100"
+                    peer-checked:bg-slate-200/30 peer-checked:opacity-100 peer-checked:font-semibold peer-checked:border-slate-100 peer-checked:text-slate-50"
                 >
                   &nbsp;&nbsp;{item.name}
                 </label>
               </li>
             ))}
             <br />
-            <button type="submit"
-              className="w-[260px] py-4 border border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/30 hover:border-slate-100"
+            <button
+              type="submit"
+              className="w-[260px] py-4 border border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/30 hover:border-slate-100 hover:text-slate-50"
               onClick={() => settArtistName(tracks.artist.name)}
             >
               <ul className="flex justify-center">
@@ -214,6 +215,7 @@ const Playlist: NextPage = () => {
           <div className="mr-3 my-3 w-[96px]">
             <a
               href={tracks.artist.external_urls.spotify}
+              title="Link to artist's spotify page"
               target="_blank"
               rel="noopener noreferrer"
               className="block relative max-w-full h-[96px]"
@@ -265,7 +267,9 @@ const Playlist: NextPage = () => {
               rel="noopener noreferrer"
             >
             <button
-              className="w-[260px] py-4 mt-5 mb-8 px-1 border border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/30 hover:border-slate-100"
+              type="button"
+              className="w-[260px] py-4 mt-5 mb-8 px-1 border border-slate-100/60 bg-slate-200/10 rounded
+                hover:bg-slate-200/30 hover:border-slate-100 hover:text-slate-50"
             >
               <ul className="flex justify-center">
                 <li className="mr-2">

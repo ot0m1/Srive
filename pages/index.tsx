@@ -55,7 +55,8 @@ const Home: NextPage = () => {
                   <div
                     className="relative top-6 -right-4">
                       <button
-                        className="cursor-pointer text-xs mx-auto max-w-[100px] mt-1 mb-4 px-1 border border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/20 hover:border-slate-100"
+                        className="cursor-pointer text-xs mx-auto max-w-[100px] px-2 py-1 border border-slate-100/60
+                          bg-slate-200/10 rounded hover:bg-slate-200/20 hover:border-slate-100 hover:text-slate-50"
                         onClick={() => signOut({redirect: false})}
                       >
                         Sign out

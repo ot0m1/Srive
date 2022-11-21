@@ -12,7 +12,7 @@ const ResultArtists: NextPage<Props> = ({ artist, index }) => {
   const {tracks, getTracks} = useContext(TracksContext)
 
   const artistImage = () => {
-    return (artist.images.length > 2) ? artist.images[2].url : '/no_image_4.png'
+    return (artist.images.length > 2) ? artist.images[2].url : '/no_image.png'
   }
 
   return (
@@ -20,7 +20,7 @@ const ResultArtists: NextPage<Props> = ({ artist, index }) => {
       onClick={getTracks}
       id={artist.id}
       data-index={index}
-      className="cursor-pointer border-b mb-1 py-1 pl-1 border-slate-100/30 flex items-center rounded hover:bg-slate-200/20"
+      className="cursor-pointer border-b mb-1 py-1 pl-1 border-slate-100/30 flex items-center rounded hover:bg-slate-200/20 hover:text-slate-50"
     >
       <div className="relative h-[46px] w-[46px]">
         <Image
