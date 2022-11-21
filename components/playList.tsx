@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useSession } from 'next-auth/react'
 
 const Playlist: NextPage = () => {
-  const {tracks, getTracks} = useContext(TracksContext)
+  const {tracks} = useContext(TracksContext)
   const [radioValue, setRadioValue] = useState('single')
   const [playListId, setPlayListId] = useState('')
   const [currentArtistName, settArtistName] = useState(tracks.artist.name)
@@ -182,7 +182,8 @@ const Playlist: NextPage = () => {
               </li>
             ))}
             <br />
-            <button type="submit"
+            <button
+              type="submit"
               className="w-[260px] py-4 border border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/30 hover:border-slate-100 hover:text-slate-50"
               onClick={() => settArtistName(tracks.artist.name)}
             >
@@ -214,6 +215,7 @@ const Playlist: NextPage = () => {
           <div className="mr-3 my-3 w-[96px]">
             <a
               href={tracks.artist.external_urls.spotify}
+              title="Link to artist's spotify page"
               target="_blank"
               rel="noopener noreferrer"
               className="block relative max-w-full h-[96px]"
@@ -265,6 +267,7 @@ const Playlist: NextPage = () => {
               rel="noopener noreferrer"
             >
             <button
+              type="button"
               className="w-[260px] py-4 mt-5 mb-8 px-1 border border-slate-100/60 bg-slate-200/10 rounded
                 hover:bg-slate-200/30 hover:border-slate-100 hover:text-slate-50"
             >
