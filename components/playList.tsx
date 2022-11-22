@@ -224,7 +224,9 @@ const Playlist: NextPage = () => {
                 src={artistImage()}
                 alt='artist-image'
                 layout="fill"
-                objectFit="contain"
+                // objectFit="contain"
+                sizes="(max-height: 96px),
+                (max-width: 96px)"
               />
             </a>
           </div>

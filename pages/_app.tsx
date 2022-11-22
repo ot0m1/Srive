@@ -4,7 +4,11 @@ import { SessionProvider, signIn, useSession } from 'next-auth/react'
 import { useEffect } from 'react'
 
 function Init() {
-  const { data: session, status } = useSession()
+  const { data: session } = useSession()
+
+  if (session && (Date.now() >= parseInt(session!.token.accessTokenExpires))) {
+    signIn('spotify')
+  }
 
   useEffect(() => {
     if (session?.error === "RefreshAccessTokenError") {
