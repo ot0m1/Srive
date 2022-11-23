@@ -7,7 +7,7 @@ import React from 'react'
 import Image from 'next/image'
 import { useSession, signOut } from 'next-auth/react'
 import LogIn from '../components/logIn'
-import router, { useRouter } from 'next/router'
+import router from 'next/router'
 
 const Home: NextPage = () => {
   const { data: session, status } = useSession()
