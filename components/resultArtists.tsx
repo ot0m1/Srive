@@ -27,7 +27,7 @@ const ResultArtists: NextPage<Props> = ({ artist, index }) => {
           src={artistImage()}
           alt='artist-image'
           layout="fill"
-          // objectFit="contain"
+          objectFit="contain"
           sizes="(max-height: 46px),
               (max-width: 46px)"
         />

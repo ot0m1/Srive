@@ -17,7 +17,7 @@ const Playlist: NextPage = () => {
   }
 
   const artistImage = () => {
-    return (tracks.artist.images.length > 2) ? tracks.artist.images[2].url : '/no_image.png'
+    return (tracks.artist.images.length > 2) ? tracks.artist.images[1].url : '/no_image.png'
   }
 
   const createPlaylist = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -224,7 +224,7 @@ const Playlist: NextPage = () => {
                 src={artistImage()}
                 alt='artist-image'
                 layout="fill"
-                // objectFit="contain"
+                objectFit="contain"
                 sizes="(max-height: 96px),
                 (max-width: 96px)"
               />
