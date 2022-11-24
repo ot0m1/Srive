@@ -243,7 +243,7 @@ const Playlist: NextPage = () => {
           {hasSinglesOrAlbums() ?
             <span>Create playlist with the artist you searched for</span>
             :
-            <span>No songs found. It is possible that the artist participated only in the compilation album or it could be a public playlist.</span>            
+            <span>No songs found. It is possible that the artist participated only in the compilation album or it could be a public playlist.</span>
           }
         </p>
       </div>
