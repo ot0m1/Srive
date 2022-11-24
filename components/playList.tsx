@@ -8,7 +8,7 @@ const Playlist: NextPage = () => {
   const {tracks} = useContext(TracksContext)
   const [radioValue, setRadioValue] = useState('single')
   const [playListId, setPlayListId] = useState('')
-  const [currentArtistName, settArtistName] = useState(tracks.artist.name)
+  const [currentArtistId, settArtistId] = useState(tracks.artist.id)
   const session: any = useSession()
   const token = session.data.token.accessToken
 
@@ -185,7 +185,7 @@ const Playlist: NextPage = () => {
             <button
               type="submit"
               className="w-[260px] py-4 border border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/30 hover:border-slate-100 hover:text-slate-50"
-              onClick={() => settArtistName(tracks.artist.name)}
+              onClick={() => settArtistId(tracks.artist.id)}
             >
               <ul className="flex justify-center">
                 <li className="mr-2">
@@ -243,7 +243,7 @@ const Playlist: NextPage = () => {
           {hasSinglesOrAlbums() ?
             <span>Create playlist with the artist you searched for</span>
             :
-            <span>No songs found. It is possible that the artist participated only in the compilation album or it could be a public playlist.</span>            
+            <span>No songs found. It is possible that the artist participated only in the compilation album or it could be a public playlist.</span>
           }
         </p>
       </div>
@@ -261,7 +261,7 @@ const Playlist: NextPage = () => {
         <></>
       }
       { hasSinglesOrAlbums() && <PlaylistForm /> }
-      { playListUrl() != '' &&  (currentArtistName === tracks.artist.name) &&
+      { playListUrl() != '' &&  (currentArtistId === tracks.artist.id) &&
         <p>
             <a
               href={ playListUrl() }
