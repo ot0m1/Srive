@@ -11,12 +11,12 @@ const Footer: NextPage = () => {
             GitHub
           </a>
         </li>
-        <li className="mx-1 ml-5 mt-2">
+        <li className="mx-1 ml-8 mt-2">
           <a href="https://twitter.com/ot0m1" target="_blank" rel="noopener noreferrer">
             Twitter
           </a>
         </li>
-        <li className="mx-1 ml-5 mt-2">
+        <li className="mx-1 ml-8 mt-2">
           <a href="https://blog.otomi.world/" target="_blank" rel="noopener noreferrer">
             Blog
           </a>
