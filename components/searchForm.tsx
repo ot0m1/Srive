@@ -46,12 +46,12 @@ const PageWithJSbasedForm = () => {
             name="artist"
             required
             placeholder="Search Artists"
-            className="w-[90%] pb-[1px] border-none bg-transparent caret-slate-200 focus:outline-none"
+            className="w-[90%] pl-[5px] pb-[2px] border-none bg-transparent caret-slate-200 focus:outline-none"
           />
           <button
             type="submit"
             title="Click this button to search for an artist"
-            className="mt-[6px] mr-[2px] border-none bg-transparent rounded"
+            className="mt-[6px] pb-[5px] pr-[5px] border-none bg-transparent rounded"
           >
             <Image
               src='/iconmonstr-search-thin-240.png'

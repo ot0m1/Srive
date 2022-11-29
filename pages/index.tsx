@@ -59,7 +59,7 @@ const Home: NextPage = () => {
                           bg-slate-200/10 rounded hover:bg-slate-200/20 hover:border-slate-100 hover:text-slate-50"
                         onClick={() => signOut({redirect: false})}
                       >
-                        Sign out
+                        Log out
                       </button>
                   </div>
                 </li>
