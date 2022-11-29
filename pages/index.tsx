@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Link from 'next/link'
 import SearchForm from '../components/searchForm'
 import Footer from '../components/footer'
 import React from 'react'
