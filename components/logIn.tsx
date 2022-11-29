@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { signIn } from 'next-auth/react'
 
 const LogIn = () => {
@@ -12,11 +13,23 @@ const LogIn = () => {
         </p>
       </div>
       <button
-        className="container cursor-pointer max-w-[140px] mx-auto mt-1 mb-4 border
+        className="container cursor-pointer w-[260px] mx-auto mt-1 mb-4 py-4 px-1 border
           border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/20 hover:border-slate-100 hover:text-slate-50"
         onClick={() => signIn('spotify')}
       >
-        Log in to Spotify
+      <ul className="flex justify-center">
+        <li className="mr-2">
+          <Image
+            src='/Spotify_Icon_CMYK_White.png'
+            alt='spotify-logo'
+            width={26}
+            height={26}
+          />
+        </li>
+        <li className="font-bold">
+          Log in to Spotify
+        </li>
+      </ul>
       </button>
   </>
   )
