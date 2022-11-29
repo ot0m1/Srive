@@ -3,19 +3,20 @@ import Link from 'next/link'
 
 const Footer: NextPage = () => {
   return (
-    <footer className="mx-auto footer text-center text-sm">
-      <ul className="flex mb-4 text-slate-200/80 font-medium">
-        <li className="mx-1">
+    <footer className="mx-auto footer text-center text-xs">
+      <ul
+        className="flex mb-2 px-10 text-slate-200/80 font-medium border-t border-slate-100/50">
+        <li className="mx-1 mt-2">
           <a href="https://github.com/ot0m1/Srive" target="_blank" rel="noopener noreferrer">
             GitHub
           </a>
         </li>
-        <li className="mx-1 ml-5">
+        <li className="mx-1 ml-5 mt-2">
           <a href="https://twitter.com/ot0m1" target="_blank" rel="noopener noreferrer">
             Twitter
           </a>
         </li>
-        <li className="mx-1 ml-5">
+        <li className="mx-1 ml-5 mt-2">
           <a href="https://blog.otomi.world/" target="_blank" rel="noopener noreferrer">
             Blog
           </a>
