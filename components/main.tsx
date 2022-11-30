@@ -1,10 +1,10 @@
 import type { NextPage } from 'next'
-import SearchForm from '../components/searchForm'
 import React from 'react'
 import Image from 'next/image'
 import { useSession, signOut } from 'next-auth/react'
-import LogIn from '../components/logIn'
 import router from 'next/router'
+import LogIn from './logIn'
+import SearchForm from './searchForm'
 
 const Main: NextPage = () => {
   const { data: session, status } = useSession()
