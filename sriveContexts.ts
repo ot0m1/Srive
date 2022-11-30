@@ -8,3 +8,11 @@ export const TracksContext = createContext({} as {
   }
   getTracks: MouseEventHandler<HTMLParagraphElement>
 })
+
+export const PlayListIdContext = createContext({} as {
+  playListId: string
+})
+
+export const CurrentArtistIdContext = createContext({} as {
+  currentArtistId: string
+})
