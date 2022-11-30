@@ -3,7 +3,6 @@ import Header from '../components/header'
 import Main from '../components/main'
 import Footer from '../components/footer'
 import React from 'react'
-import { useSession, signOut } from 'next-auth/react'
 
 const Home: NextPage = () => {
   return (
