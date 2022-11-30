@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
 import SearchForm from '../components/searchForm'
+import Header from '../components/header'
 import Footer from '../components/footer'
 import React from 'react'
 import Image from 'next/image'
@@ -17,11 +17,7 @@ const Home: NextPage = () => {
 
   return (
     <div className="container mx-auto md:w-[60%] flex flex-col min-h-screen">
-      <Head>
-        <title>Srive</title>
-        <meta name="description" content="It is very easy to create only singles or only albums playlists for Spotify artists." />
-        <link rel="icon" href="/srive_gray_e2e8f0_22do.png" />
-      </Head>
+      <Header />
 
       <main className="flex-grow">
         <section className="container mx-auto w-[90%] text-center">
