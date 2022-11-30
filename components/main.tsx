@@ -22,12 +22,12 @@ const Main: NextPage = () => {
                   className="cursor-pointer mt-[18px] mr-[12px]"
                   onClick={() => router.reload()}
                 >
-                    <Image
-                      src='/srive_gray_e2e8f0_22do.png'
-                      alt='srive-logo'
-                      width={36}
-                      height={36}
-                    />
+                  <Image
+                    src='/srive_gray_e2e8f0_22do.png'
+                    alt='srive-logo'
+                    width={36}
+                    height={36}
+                  />
                 </div>
               </li>
               <li >
