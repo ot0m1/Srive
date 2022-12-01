@@ -8,7 +8,6 @@ const PageWithJSbasedForm = () => {
   const [artists, setResults] = useState([])
   const session: any = useSession()
   const token = session.data.token.accessToken
-  const [searching, setSearching] = useState(false)
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -31,7 +30,6 @@ const PageWithJSbasedForm = () => {
     const response = await fetch(endpoint, options)
     const results = await response.json()
 
-    setSearching(true)
     setResults(results.data)
   }
 
@@ -62,8 +60,8 @@ const PageWithJSbasedForm = () => {
           </button>
         </div>
       </form>
-      {searching && artists.length > 0 && <Results artists={artists} />}
-      {searching && artists.length === 0 && <NoResults /> }
+      {artists.length > 0 && <Results artists={artists} />}
+      {artists.length === 0 && <NoResults /> }
     </div>
   )
 }
