@@ -5,11 +5,12 @@ import Image from 'next/image'
 import { useSession } from 'next-auth/react'
 
 const PageWithJSbasedForm = () => {
-  const [artists, setResults] = useState([])
+  const [artists, setArtists] = useState([])
+  const [searching, setSearching] = useState(false)
+  const [searchStatus, setSearchStatus] = useState(true)
   const session: any = useSession()
   const token = session.data.token.accessToken
-  const [searching, setSearching] = useState(false)
-
+  
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
   
@@ -32,7 +33,11 @@ const PageWithJSbasedForm = () => {
     const results = await response.json()
 
     setSearching(true)
-    setResults(results.data)
+    if (response.status === 200) {
+      setArtists(results.data)
+    } else {
+      setSearchStatus(false)
+    }
   }
 
   return (
@@ -62,8 +67,9 @@ const PageWithJSbasedForm = () => {
           </button>
         </div>
       </form>
-      {searching && artists.length > 0 && <Results artists={artists} />}
-      {searching && artists.length === 0 && <NoResults /> }
+      { !searchStatus && <p>falseになっちゃったよ〜</p>}
+      {searchStatus && searching && artists.length > 0 && <Results artists={artists} />}
+      {searchStatus && searching && artists.length === 0 && <NoResults /> }
     </div>
   )
 }
