@@ -4,7 +4,7 @@ import Image from 'next/image'
 const NoResults: NextPage = () => {
   return (
     <div className="mx-auto -mt-2">
-      <p className="font-bold text-3xl">oops!</p>
+      <h2 className="font-bold text-3xl">oops!</h2>
       <Image
         src='/iconmonstr-smiley-24-240.png'
         alt='No Results Image'
