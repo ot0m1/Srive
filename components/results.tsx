@@ -28,7 +28,7 @@ const Results: NextPage<Props> = ({ artists }) => {
     }
 
     const index = (event.currentTarget as HTMLInputElement).getAttribute('data-index') || ''
-  
+
     const JSONdata = JSON.stringify(data)
     const endpoint = '/api/tracks'
     const options = {
@@ -43,7 +43,6 @@ const Results: NextPage<Props> = ({ artists }) => {
 
     if (response.status === 200) {
       const results = await response.json()
-
       setTracks({
         'singles': results.data.singles.items,
         'albums': results.data.albums.items,

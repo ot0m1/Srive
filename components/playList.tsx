@@ -4,12 +4,14 @@ import { TracksContext } from '../sriveContexts'
 import Image from 'next/image'
 import { useSession } from 'next-auth/react'
 import Profile from './profile'
+import Error from './error'
 
 const Playlist: NextPage = () => {
   const {tracks} = useContext(TracksContext)
   const [radioValue, setRadioValue] = useState('single')
   const [playListId, setPlayListId] = useState('')
   const [currentArtistId, settArtistId] = useState(tracks.artist.id)
+  const [status, setStatus] = useState(true)
   const session: any = useSession()
   const token = session.data.token.accessToken
 
@@ -39,10 +41,15 @@ const Playlist: NextPage = () => {
       }
 
       const playlist = await fetch(endpoint, options)
-      const results = await playlist.json()
-      playListId = results.data.id
-      setPlayListId(playListId)
-      await addTracksToPlaylist(playListId)
+
+      if (playlist.status === 201) {
+        const results = await playlist.json()
+        playListId = results.data.id
+        setPlayListId(playListId)
+        await addTracksToPlaylist(playListId)
+      } else {
+        setStatus(false)
+      }
   }
 
   const addTracksToPlaylist = async (playListId: string) => {
@@ -216,7 +223,8 @@ const Playlist: NextPage = () => {
         <></>
       }
       { hasSinglesOrAlbums() && <PlayListForm /> }
-      { playListUrl() != '' &&  (currentArtistId === tracks.artist.id) &&
+      { !status && <Error /> }
+      { status && playListUrl() != '' &&  (currentArtistId === tracks.artist.id) &&
         <p>
             <a
               href={ playListUrl() }

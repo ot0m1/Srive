@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import Results from './results'
 import NoResults from './noResults'
 import Error from './error'
@@ -34,6 +34,7 @@ const PageWithJSbasedForm = () => {
     const results = await response.json()
 
     setSearching(true)
+
     if (response.status === 200) {
       setArtists(results.data)
     } else {
@@ -70,7 +71,7 @@ const PageWithJSbasedForm = () => {
           </div>
         </form>
       }
-      { !status && <Error />}
+      { !status && <Error /> }
       {status && searching && artists.length > 0 && <Results artists={artists} />}
       {status && searching && artists.length === 0 && <NoResults /> }
     </div>
