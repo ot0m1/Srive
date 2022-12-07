@@ -1,24 +1,21 @@
 import React from 'react'
 import type { NextPage } from 'next'
-import Main from '../components/main'
+import Login from '../components/logIn'
 import Layout from '../components/Layout'
 import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
 
-const Home: NextPage = () => {
+const SginIn: NextPage = () => {
   const router = useRouter()
-  useSession({
-    required: true,
-    onUnauthenticated() {
-      router.push('/signIn')
-    }
-  })
+  const { data: session, status } = useSession()
+
+  if (status === 'authenticated') router.push('/')
 
   return (
     <Layout>
-      <Main />
+      <Login />
     </Layout>
   )
 }
 
-export default Home
+export default SginIn
