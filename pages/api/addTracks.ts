@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import axios, { AxiosResponse } from 'axios'
+import axios from 'axios'
 
 const Hundler = async (req: NextApiRequest, res: NextApiResponse) => {
   const body = req.body
@@ -11,11 +11,17 @@ const Hundler = async (req: NextApiRequest, res: NextApiResponse) => {
     'Content-Type': 'application/json; charset=utf-8',
   }
 
+  let status = 200
+
   for (const uri of uris) {
-    let res = await addTracks(headers, playListId, uri)
+    let response = await addTracks(headers, playListId, uri)
+    if (response.status != 200) {
+      status = response.status
+      break
+    }
   }
 
-  res.status(200)
+  res.status(status)
 }
 
 const addTracks = async(headers: {[key: string]: string}, playListId: string, uris: string[]) => {
@@ -23,14 +29,14 @@ const addTracks = async(headers: {[key: string]: string}, playListId: string, ur
     uris: uris,
   }
 
-  await axios({
+  const response = await axios({
     method: 'POST',
     url: `https://api.spotify.com/v1/playlists/${playListId}/tracks`,
     headers: headers,
     data: data
-  }).then((response: AxiosResponse) => {
-    return response
   })
+
+  return response
 }
 
 export default Hundler

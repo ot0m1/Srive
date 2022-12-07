@@ -6,17 +6,17 @@ const EachTrack = async (req: NextApiRequest, res: NextApiResponse) => {
   const token = body.token
   const ids = body.ids
 
-  const uris = await getTrackId(token, ids)
+  const [status, uris] = await getTrackId(token, ids)
 
-  res.status(200).json({ uris: uris })
+  res.status(status).json({ uris: uris })
 }
 
 const getTrackId = async (token: any, ids: any) => {
   let albums: any = []
   let tracks: any = []
   let uris: any = []
+  let status: number = 200
 
-  // id（=アルバム（シングルもアルバムという定義）の数だけ繰り返し
   for (const id of ids) {
     const severalId = id.join(',')
     const response = await axios.get(`https://api.spotify.com/v1/albums`, {
@@ -29,9 +29,11 @@ const getTrackId = async (token: any, ids: any) => {
       })
 
     albums = albums.concat(response.data.albums)
+    if (response.status != 200) {
+      status = response.status
+      break
+    }
   }
-
-  // flat, flatMap で書き換えできそう
 
   for (const album of albums) {
     tracks = tracks.concat(album.tracks.items)
@@ -43,7 +45,7 @@ const getTrackId = async (token: any, ids: any) => {
 
   uris = chunk(uris, 100)
 
-  return uris
+  return [status, uris]
 }
 
 function chunk<T extends any[]>(array: T, size: number) {

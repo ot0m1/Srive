@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 
 const Footer: NextPage = () => {
   return (
-    <footer className="mx-auto footer text-center text-xs">
+    <footer className="mx-auto mt-8 footer text-center text-xs">
       <ul
         className="flex mb-2 px-10 text-slate-200/80 font-medium border-t border-slate-100/50">
         <li className="mx-1 mt-2">

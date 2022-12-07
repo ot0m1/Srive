@@ -4,12 +4,14 @@ import { TracksContext } from '../sriveContexts'
 import Image from 'next/image'
 import { useSession } from 'next-auth/react'
 import Profile from './profile'
+import Error from './error'
 
 const Playlist: NextPage = () => {
   const {tracks} = useContext(TracksContext)
   const [radioValue, setRadioValue] = useState('single')
   const [playListId, setPlayListId] = useState('')
-  const [currentArtistId, settArtistId] = useState(tracks.artist.id)
+  const [currentArtistId, setArtistId] = useState(tracks.artist.id)
+  const [status, setStatus] = useState(true)
   const session: any = useSession()
   const token = session.data.token.accessToken
 
@@ -20,7 +22,7 @@ const Playlist: NextPage = () => {
   const createPlaylist = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    let playListId: string = ''
+    let createdPlayListId: string = ''
 
     const data = {
       token: token,
@@ -28,21 +30,27 @@ const Playlist: NextPage = () => {
       name: playlistName(radioValue),
     }
 
-      const JSONdata = JSON.stringify(data)
-      const endpoint = '/api/playList'
-      const options = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSONdata,
-      }
+    const JSONdata = JSON.stringify(data)
+    const endpoint = '/api/playList'
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSONdata,
+    }
 
-      const playlist = await fetch(endpoint, options)
-      const results = await playlist.json()
-      playListId = results.data.id
-      setPlayListId(playListId)
-      await addTracksToPlaylist(playListId)
+    const playlist = await fetch(endpoint, options)
+
+    if (playlist.status != 201) {
+      setStatus(false)
+      return
+    }
+
+    const results = await playlist.json()
+    createdPlayListId = await results.data.id
+    setPlayListId(createdPlayListId)
+    await addTracksToPlaylist(createdPlayListId)
   }
 
   const addTracksToPlaylist = async (playListId: string) => {
@@ -62,8 +70,14 @@ const Playlist: NextPage = () => {
       body: JSONdata,
     }
 
-    const respomse = await fetch(endpoint, options)
-    const results = await respomse.json()
+    const response = await fetch(endpoint, options)
+
+    if (response.status != 200) {
+      setStatus(false)
+      return
+    }
+
+    const results = await response.json()
     return results
   }
 
@@ -83,8 +97,14 @@ const Playlist: NextPage = () => {
       body: JSONdata,
     }
 
-    const respomse = await fetch(endpoint, options)
-    const results = await respomse.json()
+    const response = await fetch(endpoint, options)
+
+    if (response.status != 200) {
+      setStatus(false)
+      return
+    }
+    
+    const results = await response.json()
     return results
   }
 
@@ -141,7 +161,7 @@ const Playlist: NextPage = () => {
     return `${tracks.artist.name} ${type} #${year}${month}${date}`
   }
 
-  const playListUrl = () => {
+  const getPlayListUrl = () => {
     return (playListId != '') ? `https://open.spotify.com/playlist/${playListId}` : ''
   }
 
@@ -153,7 +173,11 @@ const Playlist: NextPage = () => {
     ]
     
     return (
-      <div className="container mx-auto w-full md:max-w-[520px] text-center">
+      <div
+        className="container mx-auto w-full md:max-w-[520px] text-center"
+        onMouseEnter={() => setArtistId(tracks.artist.id)}
+        onTouchStart={() => setArtistId(tracks.artist.id)}
+      >
         <ul>
           <form onSubmit={createPlaylist}>
             {valueList.map((item, index) => (
@@ -182,7 +206,7 @@ const Playlist: NextPage = () => {
             <button
               type="submit"
               className="w-[260px] py-4 border border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/30 hover:border-slate-100 hover:text-slate-50"
-              onClick={() => settArtistId(tracks.artist.id)}
+              onClick={() => setArtistId(tracks.artist.id)}
             >
               <ul className="flex justify-center">
                 <li className="mr-2">
@@ -215,17 +239,18 @@ const Playlist: NextPage = () => {
         :
         <></>
       }
-      { hasSinglesOrAlbums() && <PlayListForm /> }
-      { playListUrl() != '' &&  (currentArtistId === tracks.artist.id) &&
+      { !status && <Error /> }
+      { status && hasSinglesOrAlbums() && <PlayListForm /> }
+      { status && getPlayListUrl() != '' && (currentArtistId === tracks.artist.id) &&
         <p>
             <a
-              href={ playListUrl() }
+              href={ getPlayListUrl() }
               target="_blank"
               rel="noopener noreferrer"
             >
             <button
               type="button"
-              className="w-[260px] py-4 mt-5 mb-8 px-1 border border-slate-100/60 bg-slate-200/10 rounded
+              className="w-[260px] py-4 mt-5 px-1 border border-slate-100/60 bg-slate-200/10 rounded
                 hover:bg-slate-200/30 hover:border-slate-100 hover:text-slate-50"
             >
               <ul className="flex justify-center">

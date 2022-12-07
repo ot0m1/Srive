@@ -24,7 +24,7 @@ const Playlist = async (req: NextApiRequest, res: NextApiResponse) => {
     data: data
   })
 
-  res.status(200).json({ data: response.data })
+  res.status(response.status).json({ data: response.data })
 }
 
 export default Playlist
