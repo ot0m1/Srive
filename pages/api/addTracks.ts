@@ -13,24 +13,15 @@ const Hundler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   let status = 200
 
-  console.log("=============================================================")
-  console.log("実行回数👇")
-  console.log(uris.length)
-
   for (const uri of uris) {
     let response = await addTracks(headers, playListId, uri)
-    console.log("実行" + response.status)
-    // if (response.status != 201) {
-    //   status = response.status
-    //   break
-    // }
+    if (response.status != 201) {
+      status = response.status
+      break
+    }
   }
 
-  console.log("ループ抜けた")
-
-  console.log("=============================================================")
-
-  res.status(status)
+  res.status(status).end()
 }
 
 const addTracks = async(headers: {[key: string]: string}, playListId: string, uris: string[]) => {

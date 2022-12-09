@@ -54,13 +54,10 @@ const Playlist: NextPage = () => {
     createdPlayListId = await results.data.id
     setPlayListId(createdPlayListId)
     await addTracksToPlaylist(createdPlayListId)
+
     setLoading(false)
   }
 
-  // =========================================================
-  // =========================================================
-  // =========================================================
-  // ここ修正
   const addTracksToPlaylist = async (playListId: string) => {
     const data = {
       token: token,
@@ -82,44 +79,8 @@ const Playlist: NextPage = () => {
 
     if (response.status != 200) {
       setStatus(false)
-      return
     }
-
-    const results = await response.json()
-    return results
   }
-
-  const addToPlaylist = async (uri: string) => {
-    const data = {
-      token: token,
-      playListId: playListId,
-      uris: uri,
-    }
-
-    const JSONdata = JSON.stringify(data)
-    const endpoint = '/api/addTracks'
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSONdata,
-    }
-
-    const response = await fetch(endpoint, options)
-
-    if (response.status != 200) {
-      setStatus(false)
-      return
-    }
-
-    const results = await response.json()
-    return results    
-  }
-
-  // =========================================================
-  // =========================================================
-  // =========================================================
 
   const getEachTrack = async () => {
     const data = {
@@ -139,10 +100,10 @@ const Playlist: NextPage = () => {
 
     const response = await fetch(endpoint, options)
 
-    // if (response.status != 201) {
-    //   setStatus(false)
-    //   return
-    // }
+    if (response.status != 200) {
+      setStatus(false)
+      return
+    }
 
     const results = await response.json()
     setLoading(false)
@@ -270,6 +231,10 @@ const Playlist: NextPage = () => {
     )
   }
 
+  if (!status) {
+    return (<Error />)
+  }
+
   return (
     <>
       { status && <Profile /> }
@@ -280,7 +245,6 @@ const Playlist: NextPage = () => {
         :
         <></>
       }
-      { !status && <Error /> }
       { status && hasSinglesOrAlbums() && <PlayListForm /> }
       { status && isLoading && <Loading />}
       { status && !isLoading && getPlayListUrl() != '' && currentArtistId === tracks.artist.id &&

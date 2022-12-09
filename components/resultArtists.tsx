@@ -16,7 +16,7 @@ const ResultArtists: NextPage<Props> = ({ artist, index }) => {
   }
 
   return (
-    <p
+    <div
       onClick={getTracks}
       id={artist.id}
       data-index={index}
@@ -33,7 +33,7 @@ const ResultArtists: NextPage<Props> = ({ artist, index }) => {
         />
       </div>
       &nbsp;&nbsp;&nbsp;{artist.name}
-    </p>
+    </div>
   )
 }
 
