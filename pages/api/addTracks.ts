@@ -15,13 +15,13 @@ const Hundler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   for (const uri of uris) {
     let response = await addTracks(headers, playListId, uri)
-    if (response.status != 200) {
+    if (response.status != 201) {
       status = response.status
       break
     }
   }
 
-  res.status(status)
+  res.status(status).end()
 }
 
 const addTracks = async(headers: {[key: string]: string}, playListId: string, uris: string[]) => {

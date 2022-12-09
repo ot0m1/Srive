@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { useSession } from 'next-auth/react'
 import Profile from './profile'
 import Error from './error'
+import Loading from './loading'
 
 const Playlist: NextPage = () => {
   const {tracks} = useContext(TracksContext)
@@ -12,6 +13,7 @@ const Playlist: NextPage = () => {
   const [playListId, setPlayListId] = useState('')
   const [currentArtistId, setArtistId] = useState(tracks.artist.id)
   const [status, setStatus] = useState(true)
+  const [isLoading, setLoading] = useState(false)
   const session: any = useSession()
   const token = session.data.token.accessToken
 
@@ -21,6 +23,7 @@ const Playlist: NextPage = () => {
 
   const createPlaylist = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    setLoading(true)
 
     let createdPlayListId: string = ''
 
@@ -51,6 +54,8 @@ const Playlist: NextPage = () => {
     createdPlayListId = await results.data.id
     setPlayListId(createdPlayListId)
     await addTracksToPlaylist(createdPlayListId)
+
+    setLoading(false)
   }
 
   const addTracksToPlaylist = async (playListId: string) => {
@@ -74,11 +79,7 @@ const Playlist: NextPage = () => {
 
     if (response.status != 200) {
       setStatus(false)
-      return
     }
-
-    const results = await response.json()
-    return results
   }
 
   const getEachTrack = async () => {
@@ -103,8 +104,9 @@ const Playlist: NextPage = () => {
       setStatus(false)
       return
     }
-    
+
     const results = await response.json()
+    setLoading(false)
     return results
   }
 
@@ -229,19 +231,23 @@ const Playlist: NextPage = () => {
     )
   }
 
+  if (!status) {
+    return (<Error />)
+  }
+
   return (
     <>
-      <Profile />
-      { tracks.singles.length === 50 || tracks.albums.length === 50 ?
+      { status && <Profile /> }
+      { status && (tracks.singles.length === 50 || tracks.albums.length === 50) ?
         <p className="text-sm mt-1 mb-4 max-w-90% mx-auto text-center">
           Due to API specifications, a maximum of 50 singles and 50 albums each can be added to the playlist.
         </p>
         :
         <></>
       }
-      { !status && <Error /> }
       { status && hasSinglesOrAlbums() && <PlayListForm /> }
-      { status && getPlayListUrl() != '' && (currentArtistId === tracks.artist.id) &&
+      { status && isLoading && <Loading />}
+      { status && !isLoading && getPlayListUrl() != '' && currentArtistId === tracks.artist.id &&
         <p>
             <a
               href={ getPlayListUrl() }
@@ -252,6 +258,7 @@ const Playlist: NextPage = () => {
               type="button"
               className="w-[260px] py-4 mt-5 px-1 border border-slate-100/60 bg-slate-200/10 rounded
                 hover:bg-slate-200/30 hover:border-slate-100 hover:text-slate-50"
+                onClick={() => setPlayListId('')}
             >
               <ul className="flex justify-center">
                 <li className="mr-2">

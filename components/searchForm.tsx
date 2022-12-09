@@ -33,13 +33,13 @@ const PageWithJSbasedForm = () => {
     const response = await fetch(endpoint, options)
     const results = await response.json()
 
-    setSearching(true)
-
-    if (response.status === 200) {
-      setArtists(results.data)
-    } else {
+    if (response.status != 200) {
       setStatus(false)
+      return
     }
+
+    setSearching(true)
+    setArtists(results.data)
   }
 
   return (
@@ -72,8 +72,8 @@ const PageWithJSbasedForm = () => {
         </form>
       }
       { !status && <Error /> }
-      {status && searching && artists.length > 0 && <Results artists={artists} />}
-      {status && searching && artists.length === 0 && <NoResults /> }
+      { status && searching && artists.length > 0 && <Results artists={artists} /> }
+      { status && searching && artists.length === 0 && <NoResults /> }
     </div>
   )
 }
