@@ -29,7 +29,7 @@ const ResultArtists: NextPage<Props> = ({ artist, index }) => {
           layout="fill"
           objectFit="contain"
           sizes="(max-height: 46px),
-              (max-width: 46px)"
+                (max-width: 46px)"
         />
       </div>
       &nbsp;&nbsp;&nbsp;{artist.name}
