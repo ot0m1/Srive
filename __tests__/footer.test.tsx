@@ -3,7 +3,7 @@ import Footer from '../components/footer'
 import '@testing-library/jest-dom'
 
 describe('Footer', () => {
-  test('Footer', () => {
+  test('Is the expected text displayed?', () => {
     render(<Footer />)
     screen.getByText('GitHub')
     screen.getByText('Twitter')

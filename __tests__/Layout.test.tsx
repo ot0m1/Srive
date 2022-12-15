@@ -1,14 +1,47 @@
 import { render, screen } from '@testing-library/react'
 import Layout from '../components/Layout'
-import Error from '../components/error'
 import '@testing-library/jest-dom'
+import type { NextPage } from 'next'
+import React, { ReactNode } from 'react'
+
+jest.mock('next-auth/react', () => {
+  return {
+    useSession: jest.fn(() => {
+      return {status: 'authenticated'}
+    })
+  }
+})
+
+// const mockChildComponent = jest.fn()
+// jest.mock('./Layout', () => (props: any) => {
+//   mockChildComponent(props)
+//   // return <mock-childComponent />
+//   return 'Test'
+//   // return {
+//   //   jest.fn(() => {
+//   //     <div>Test</div>
+//   //   })
+//   // }
+// })
 
 describe('Layout', () => {
   test('Layout', () => {
-    // [next-auth]: `useSession` must be wrapped in a <SessionProvider />
+    const dummyProps: NextPage = () => {
+      return (<div>Test</div>)
+    }
+
+    // let dummyProps: ReactNode
+    // beforeEach(() => {
+    //   dummyProps = {
+    //     body: 'dummy body 1',
+    //   };
+    // });
     
-    // render(<Layout hoge={<div>Test</div>} />)
-    // screen.findByLabelText('title')
-    // screen.findByLabelText('meta')
+    // render(<Layout />)
+    render(<Layout props={'Test'} />)
+    // screen.getByText('Test')
+    screen.getByText('GitHub')
+    screen.getByText('Twitter')
+    screen.getByText('Blog')
   })
 })
