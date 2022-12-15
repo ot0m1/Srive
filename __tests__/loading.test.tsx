@@ -5,6 +5,6 @@ import '@testing-library/jest-dom'
 describe('Loading', () => {
   test('Is the expected text displayed?', () => {
     render(<Loading />)
-    screen.getByText('Creating...')
+    expect(screen.getByText('Creating...')).toBeInTheDocument()
   })
 })

@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import TitleArea from '../components/titleArea'
 import '@testing-library/jest-dom'
 
@@ -13,15 +13,12 @@ jest.mock('next-auth/react', () => {
 
 describe('TitleArea', () => {
   test('Is the logout button displayed if the login is successful?', () => {
-    jest.fn(() => {
-      return {status: 'unauthenticated'}
-    })
     render(<TitleArea />)
-    screen.getByText('Log out')
+    expect(screen.getByText('Log out')).toBeInTheDocument()
   })
 
   test('Is the application name displayed?', () => {
     render(<TitleArea />)
-    screen.getByText('Srive')
+    expect(screen.getByText('Srive')).toBeInTheDocument()
   })
 })

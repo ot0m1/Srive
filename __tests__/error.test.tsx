@@ -5,6 +5,6 @@ import '@testing-library/jest-dom'
 describe('Error', () => {
   test('Is the expected text displayed?', () => {
     render(<Error />)
-    screen.getByText('Error occurred')
+    expect(screen.getByText('Error occurred')).toBeInTheDocument()
   })
 })
