@@ -5,8 +5,8 @@ import '@testing-library/jest-dom'
 describe('Footer', () => {
   test('Is the expected text displayed?', () => {
     render(<Footer />)
-    screen.getByText('GitHub')
-    screen.getByText('Twitter')
-    screen.getByText('Blog')
+    expect(screen.getByText('GitHub')).toBeInTheDocument()
+    expect(screen.getByText('Twitter')).toBeInTheDocument()
+    expect(screen.getByText('Blog')).toBeInTheDocument()
   })
 })

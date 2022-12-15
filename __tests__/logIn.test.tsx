@@ -5,7 +5,7 @@ import '@testing-library/jest-dom'
 describe('LogIn', () => {
   test('Is the expected text displayed?', () => {
     render(<LogIn />)
-    screen.getByText('Whait is Srive')
-    screen.getByText('Log in to Spotify')
+    expect(screen.getByText('Whait is Srive')).toBeInTheDocument()
+    expect(screen.getByText('Log in to Spotify')).toBeInTheDocument()
   })
 })

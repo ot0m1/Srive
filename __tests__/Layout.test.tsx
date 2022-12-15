@@ -12,36 +12,12 @@ jest.mock('next-auth/react', () => {
   }
 })
 
-// const mockChildComponent = jest.fn()
-// jest.mock('./Layout', () => (props: any) => {
-//   mockChildComponent(props)
-//   // return <mock-childComponent />
-//   return 'Test'
-//   // return {
-//   //   jest.fn(() => {
-//   //     <div>Test</div>
-//   //   })
-//   // }
-// })
-
 describe('Layout', () => {
-  test('Layout', () => {
-    const dummyProps: NextPage = () => {
-      return (<div>Test</div>)
-    }
-
-    // let dummyProps: ReactNode
-    // beforeEach(() => {
-    //   dummyProps = {
-    //     body: 'dummy body 1',
-    //   };
-    // });
-    
-    // render(<Layout />)
-    render(<Layout props={'Test'} />)
-    // screen.getByText('Test')
-    screen.getByText('GitHub')
-    screen.getByText('Twitter')
-    screen.getByText('Blog')
+  test('Does it receive props and display them as intended?', () => {
+    render(<Layout>{<div>Test</div>}</Layout>)
+    expect(screen.getByText('Test')).toBeInTheDocument()
+    expect(screen.getByText('GitHub')).toBeInTheDocument()
+    expect(screen.getByText('Twitter')).toBeInTheDocument()
+    expect(screen.getByText('Blog')).toBeInTheDocument()
   })
 })
