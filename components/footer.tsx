@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import Link from 'next/link'
 
 const Footer: NextPage = () => {
   return (
@@ -10,15 +11,20 @@ const Footer: NextPage = () => {
             GitHub
           </a>
         </li>
-        <li className="mx-1 ml-8 mt-2">
+        <li className="mx-1 ml-9 mt-2">
           <a href="https://twitter.com/ot0m1" target="_blank" rel="noopener noreferrer">
             Twitter
           </a>
         </li>
-        <li className="mx-1 ml-8 mt-2">
+        <li className="mx-1 ml-9 mt-2">
           <a href="https://blog.otomi.world/" target="_blank" rel="noopener noreferrer">
             Blog
           </a>
+        </li>
+        <li className="mx-1 ml-9 mt-2">
+          <Link href="/userPolicy">
+            User Policy
+          </Link>
         </li>
       </ul>
     </footer>

@@ -1,5 +1,6 @@
 import React from 'react'
 import type { NextPage } from 'next'
+import Link from 'next/link'
 import Login from '../components/logIn'
 import Layout from '../components/Layout'
 import { useRouter } from 'next/router'
@@ -14,6 +15,17 @@ const SginIn: NextPage = () => {
   return (
     <Layout>
       <Login />
+      <p
+        className="mt-10 container cursor-pointer w-[260px] mx-auto mb-4 py-2 px-1 border
+        border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/20 hover:border-slate-100 hover:text-slate-50"
+      >
+        <Link
+          href="/userPolicy"
+          className=""
+        >
+          UserPolicy / 利用規約
+        </Link>
+      </p>
     </Layout>
   )
 }
