@@ -13,7 +13,7 @@ const LogIn = () => {
         </p>
       </div>
       <button
-        className="container cursor-pointer w-[260px] mx-auto mt-1 mb-4 py-4 px-1 border
+        className="container cursor-pointer w-[260px] mx-auto mt-8 mb-4 py-4 px-1 border
           border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/20 hover:border-slate-100 hover:text-slate-50"
         onClick={() => signIn('spotify')}
       >

@@ -5,7 +5,8 @@ const Footer: NextPage = () => {
   return (
     <footer className="mx-auto mt-8 footer text-center text-xs">
       <ul
-        className="flex mb-2 px-10 text-slate-200/80 font-medium border-t border-slate-100/50">
+        className="flex mb-2 px-10 text-slate-200/80 font-medium border-t border-slate-100/50"
+      >
         <li className="mx-1 mt-2">
           <a href="https://github.com/ot0m1/Srive" target="_blank" rel="noopener noreferrer">
             GitHub
@@ -23,7 +24,7 @@ const Footer: NextPage = () => {
         </li>
         <li className="mx-1 ml-9 mt-2">
           <Link href="/userPolicy">
-            User Policy
+            Policy
           </Link>
         </li>
       </ul>

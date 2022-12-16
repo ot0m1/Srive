@@ -16,14 +16,12 @@ const SginIn: NextPage = () => {
     <Layout>
       <Login />
       <p
-        className="mt-10 container cursor-pointer w-[260px] mx-auto mb-4 py-2 px-1 border
-        border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/20 hover:border-slate-100 hover:text-slate-50"
+        className="mt-8 container cursor-pointer mx-auto mb-4 py-2 px-1 underline hover:text-slate-50"
       >
         <Link
           href="/userPolicy"
-          className=""
         >
-          UserPolicy / 利用規約
+          Terms of Privacy and Use Policy / プライバシーポリシー及び利用規約
         </Link>
       </p>
     </Layout>
