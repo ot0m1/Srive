@@ -16,7 +16,7 @@ const TitleArea: NextPage = () => {
       <li>
         <div
           className="cursor-pointer mt-[18px] mr-[12px]"
-          onClick={() => router.reload()}
+          onClick={() => router.push('/')}
         >
           <Image
             src='/srive_gray_e2e8f0_22do.png'
@@ -30,7 +30,7 @@ const TitleArea: NextPage = () => {
         <div>
           <h1
             className="cursor-pointer my-2 text-center text-base font-black text-5xl"
-            onClick={() => router.reload()}
+            onClick={() => router.push('/')}
           >
             Srive
           </h1>
