@@ -10,7 +10,6 @@ import Loading from './loading'
 const Playlist: NextPage = () => {
   const {tracks} = useContext(TracksContext)
   const [radioValue, setRadioValue] = useState('single')
-  const [playListId, setPlayListId] = useState('')
   const [currentArtistId, setArtistId] = useState(tracks.artist.id)
   const [status, setStatus] = useState(true)
   const [isLoading, setLoading] = useState(false)
@@ -52,7 +51,7 @@ const Playlist: NextPage = () => {
 
     const results = await playlist.json()
     createdPlayListId = await results.data.id
-    setPlayListId(createdPlayListId)
+    tracks.playlistId = createdPlayListId
     await addTracksToPlaylist(createdPlayListId)
 
     setLoading(false)
@@ -164,7 +163,7 @@ const Playlist: NextPage = () => {
   }
 
   const getPlayListUrl = () => {
-    return (playListId != '') ? `https://open.spotify.com/playlist/${playListId}` : ''
+    return (tracks.playlistId != '') ? `https://open.spotify.com/playlist/${tracks.playlistId}` : ''
   }
 
   const PlayListForm = () => {
@@ -177,8 +176,6 @@ const Playlist: NextPage = () => {
     return (
       <div
         className="container mx-auto w-full md:max-w-[520px] text-center"
-        onMouseEnter={() => setArtistId(tracks.artist.id)}
-        onTouchStart={() => setArtistId(tracks.artist.id)}
       >
         <ul>
           <form onSubmit={createPlaylist}>
@@ -209,6 +206,8 @@ const Playlist: NextPage = () => {
               type="submit"
               className="w-[260px] py-4 border border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/30 hover:border-slate-100 hover:text-slate-50"
               onClick={() => setArtistId(tracks.artist.id)}
+              onMouseEnter={() => setArtistId(tracks.artist.id)}
+              onTouchStart={() => setArtistId(tracks.artist.id)}
             >
               <ul className="flex justify-center">
                 <li className="mr-2">
@@ -237,17 +236,17 @@ const Playlist: NextPage = () => {
 
   return (
     <>
-      { status && <Profile /> }
-      { status && (tracks.singles.length === 50 || tracks.albums.length === 50) ?
+      <Profile />
+      { (tracks.singles.length === 50 || tracks.albums.length === 50) ?
         <p className="text-sm mt-1 mb-4 max-w-90% mx-auto text-center">
           Due to API specifications, a maximum of 50 singles and 50 albums each can be added to the playlist.
         </p>
         :
         <></>
       }
-      { status && hasSinglesOrAlbums() && <PlayListForm /> }
-      { status && isLoading && <Loading />}
-      { status && !isLoading && getPlayListUrl() != '' && currentArtistId === tracks.artist.id &&
+      { hasSinglesOrAlbums() && <PlayListForm /> }
+      { isLoading && <Loading />}
+      { !isLoading && getPlayListUrl() != '' && currentArtistId === tracks.artist.id &&
         <p>
             <a
               href={ getPlayListUrl() }
@@ -258,7 +257,7 @@ const Playlist: NextPage = () => {
               type="button"
               className="w-[260px] py-4 mt-5 px-1 border border-slate-100/60 bg-slate-200/10 rounded
                 hover:bg-slate-200/30 hover:border-slate-100 hover:text-slate-50"
-                onClick={() => setPlayListId('')}
+                onClick={() => tracks.playlistId = ''}
             >
               <ul className="flex justify-center">
                 <li className="mr-2">

@@ -5,14 +5,11 @@ export const TracksContext = createContext({} as {
     'singles': any,
     'albums': any,
     'artist': any,
+    'playlistId': string,
   }
   getTracks: MouseEventHandler<HTMLParagraphElement>
 })
 
 export const PlayListIdContext = createContext({} as {
   playListId: string
-})
-
-export const CurrentArtistIdContext = createContext({} as {
-  currentArtistId: string
 })

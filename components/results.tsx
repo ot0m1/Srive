@@ -15,6 +15,7 @@ const Results: NextPage<Props> = ({ artists }) => {
     'singles': [],
     'albums': [],
     'artist': [],
+    'playlistId': ''
   })
 
   const session: any = useSession()
@@ -46,7 +47,8 @@ const Results: NextPage<Props> = ({ artists }) => {
       setTracks({
         'singles': results.data.singles.items,
         'albums': results.data.albums.items,
-        'artist': artists[index]
+        'artist': artists[index],
+        'playlistId': ''
       })
     } else {
       setStatus(false)
