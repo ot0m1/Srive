@@ -25,8 +25,8 @@ Users can create playlists of singles, all songs including albums, etc. by simpl
 # Get Started
 ```
 git clone https://github.com/ot0m1/Srive.git
-npm install
 cd srive
+npm install
 npm run dev
 ```
 
