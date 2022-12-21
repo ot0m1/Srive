@@ -24,28 +24,33 @@ Users can create playlists of singles, all songs including albums, etc. by simpl
 > ユーザーはアーティストを検索するだけでシングル曲だけ、アルバムを含む全ての曲などのプレイリストの作成ができます。
 
 # Let's use it right away!
+
+## Access srive
+
+[https://srive.app/](https://srive.app/)
 ## Log in to Spotify
 
-https://user-images.githubusercontent.com/6190966/208909065-2f2cff3f-2d7d-48b0-802d-99b08a6dc9d1.png
+![Log In](https://user-images.githubusercontent.com/6190966/208909065-2f2cff3f-2d7d-48b0-802d-99b08a6dc9d1.png)
 
 ## Search Artists
 1. Enter the artist name in the search box.
 1. Click on the magnifying glass symbol.
 
-https://user-images.githubusercontent.com/6190966/208909075-f8b7df10-7fbb-4322-8d8e-f0b9bb44d257.png
+![Search Artists](https://user-images.githubusercontent.com/6190966/208909075-f8b7df10-7fbb-4322-8d8e-f0b9bb44d257.png)
 
 ## Click on the artist for whom you want to create a playlist
-https://user-images.githubusercontent.com/6190966/208909076-d571ba99-903f-4404-a525-60a5d2ac784c.png
-## Click on the artist for whom you want to create a playlist
 
-## Select whether to include only single songs, only albums, or both single songs and albums
-## Click Create a playlist
+![Click on the artist for whom you want to create a playlist](https://user-images.githubusercontent.com/6190966/208909076-d571ba99-903f-4404-a525-60a5d2ac784c.png)
+## Create a playlist
 
-https://user-images.githubusercontent.com/6190966/208909752-26daba90-d4ed-4f17-918a-ba6668af0d4b.png
+1. Select whether to include only single songs, only albums, or both single songs and albums
+1. Click Create a playlist
+
+![Create a playlist](https://user-images.githubusercontent.com/6190966/208909752-26daba90-d4ed-4f17-918a-ba6668af0d4b.png)
 
 ## Click Open a playlist in Spotify
 
-https://user-images.githubusercontent.com/6190966/208909083-6e4f10fa-323e-4463-941b-3c9921877833.png
+![Click Open a playlist in Spotify](https://user-images.githubusercontent.com/6190966/208909083-6e4f10fa-323e-4463-941b-3c9921877833.png)
 
 Enjoy!
 
