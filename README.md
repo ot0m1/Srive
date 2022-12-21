@@ -1,4 +1,6 @@
 # Srive
+[https://srive.app/](https://srive.app/)
+
 Spotify + Drive = Srive
 
 ![srive_gray_e2e8f0_22do](https://user-images.githubusercontent.com/6190966/204440619-55f12b02-df13-4e6c-9b14-9597e9c91fd3.png)
@@ -20,3 +22,15 @@ Users can create playlists of singles, all songs including albums, etc. by simpl
 > ドライブ中など、スマートフォンを操作できない状況で Spotify をよく利用する Spotify Premium ユーザー向けの、Spotify のプレイリスト作成アプリケーションです。
 > 
 > ユーザーはアーティストを検索するだけでシングル曲だけ、アルバムを含む全ての曲などのプレイリストの作成ができます。
+# Get Started
+```
+git clone https://github.com/ot0m1/Srive.git
+cd srive
+npm install
+npm run dev
+```
+
+# Test
+```
+npm run test
+```
