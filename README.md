@@ -22,3 +22,15 @@ Users can create playlists of singles, all songs including albums, etc. by simpl
 > ドライブ中など、スマートフォンを操作できない状況で Spotify をよく利用する Spotify Premium ユーザー向けの、Spotify のプレイリスト作成アプリケーションです。
 > 
 > ユーザーはアーティストを検索するだけでシングル曲だけ、アルバムを含む全ての曲などのプレイリストの作成ができます。
+# Get Started
+```
+git clone https://github.com/ot0m1/Srive.git
+npm install
+cd srive
+npm run dev
+```
+
+# Test
+```
+npm run test
+```
