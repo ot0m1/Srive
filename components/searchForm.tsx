@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Results from './results'
 import NoResults from './noResults'
 import Error from './error'
-import Image from 'next/image'
+import Image from "next/legacy/image";
 import { useSession } from 'next-auth/react'
 
 const PageWithJSbasedForm = () => {
