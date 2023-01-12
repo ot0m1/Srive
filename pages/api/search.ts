@@ -1,7 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import axios, { AxiosResponse }  from 'axios'
-
-const apiUri: string = 'https://api.spotify.com/v1'
+import axios from 'axios'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const body = req.body

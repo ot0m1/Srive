@@ -4,7 +4,7 @@ import { useSession } from 'next-auth/react'
 import SearchForm from './searchForm'
 
 const Main: NextPage = () => {
-  const { data: session, status } = useSession()
+  const session: any = useSession()
 
   const isLoggedIn = (status: string) => {
     return status === 'authenticated' ? true : false
@@ -12,7 +12,7 @@ const Main: NextPage = () => {
 
   return (
     <>
-     { isLoggedIn(status) && <SearchForm /> }
+      { isLoggedIn(session.status) && <SearchForm /> }
     </>
   )
 }

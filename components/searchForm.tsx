@@ -9,6 +9,7 @@ const PageWithJSbasedForm = () => {
   const [artists, setArtists] = useState([])
   const [searching, setSearching] = useState(false)
   const [status, setStatus] = useState(true)
+  const [userProduct, setUserProduct] = useState('')
   const session: any = useSession()
   const token = session.data.token.accessToken
   
@@ -42,9 +43,36 @@ const PageWithJSbasedForm = () => {
     setArtists(results.data)
   }
 
+  if (session && session.status != 'loading') {
+    const data = {
+      token: token
+    }
+  
+    const JSONdata = JSON.stringify(data)
+    const endpoint = '/api/user'
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSONdata,
+    }
+  
+    fetch(endpoint, options).then((response) => {
+      return response.json()
+    }).then((response) => {
+      setUserProduct(response.data.product)
+    })
+  }
+  
+  const isPremium = () => {
+    return userProduct === 'premium' ? true : false
+  }
+
   return (
     <div className="container mx-auto">
-      { status &&
+      { !status || !isPremium() && <Error /> }
+      { status && isPremium() &&
         <form onSubmit={handleSubmit} className="text-center">
           <div className="container mx-auto mt-1 mb-8 w-[70%] md:w-[60%] md:max-w-[320px]
             border border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/30 hover:border-slate-100 hover:text-slate-50">
@@ -71,9 +99,8 @@ const PageWithJSbasedForm = () => {
           </div>
         </form>
       }
-      { !status && <Error /> }
-      { status && searching && artists.length > 0 && <Results artists={artists} /> }
-      { status && searching && artists.length === 0 && <NoResults /> }
+      { status && isPremium() && searching && artists.length > 0 && <Results artists={artists} /> }
+      { status && isPremium() && searching && artists.length === 0 && <NoResults /> }
     </div>
   )
 }

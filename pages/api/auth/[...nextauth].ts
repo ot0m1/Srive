@@ -48,7 +48,11 @@ export const authOptions: any = {
       clientSecret: process.env.CLIENT_SECRET || '',
       authorization: {
         url: 'https://accounts.spotify.com/authorize',
-        params: {scope: 'playlist-modify-private,playlist-read-private,playlist-read-collaborative'}
+        params: 
+          {
+            scope: 'playlist-modify-private,playlist-read-private,playlist-read-collaborative,user-read-private',
+            show_dialog: true,
+          }
       },
     }),
   ],
