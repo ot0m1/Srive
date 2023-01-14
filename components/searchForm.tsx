@@ -2,13 +2,14 @@ import React, { useState } from 'react'
 import Results from './results'
 import NoResults from './noResults'
 import Error from './error'
-import Image from 'next/image'
+import Image from "next/legacy/image";
 import { useSession } from 'next-auth/react'
 
 const PageWithJSbasedForm = () => {
   const [artists, setArtists] = useState([])
   const [searching, setSearching] = useState(false)
   const [status, setStatus] = useState(true)
+  const [userProduct, setUserProduct] = useState('')
   const session: any = useSession()
   const token = session.data.token.accessToken
   
@@ -42,6 +43,33 @@ const PageWithJSbasedForm = () => {
     setArtists(results.data)
   }
 
+  if (session && session.status != 'loading') {
+    const data = {
+      token: token
+    }
+  
+    const JSONdata = JSON.stringify(data)
+    const endpoint = '/api/user'
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSONdata,
+    }
+  
+    fetch(endpoint, options).then((response) => {
+      return response.json()
+    }).then((response) => {
+      setUserProduct(response.data.product)
+    })
+  }
+
+  // 一旦コメントアウト
+  // const isPremium = () => {
+  //   return userProduct === 'premium' ? true : false
+  // }
+
   return (
     <div className="container mx-auto">
       { status &&
@@ -71,9 +99,9 @@ const PageWithJSbasedForm = () => {
           </div>
         </form>
       }
-      { !status && <Error /> }
       { status && searching && artists.length > 0 && <Results artists={artists} /> }
       { status && searching && artists.length === 0 && <NoResults /> }
+      { !status && <Error /> }
     </div>
   )
 }

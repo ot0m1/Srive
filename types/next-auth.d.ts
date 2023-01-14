@@ -15,6 +15,7 @@ declare module 'next-auth' {
     }
     user: {
       [neme: string]: string
+      [product :string]: string
     }
     error: string
   }
