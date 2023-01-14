@@ -28,7 +28,7 @@ const Playlist: NextPage = () => {
 
     const data = {
       token: token,
-      id: session.data.user.name,
+      id: session.data.token.sub , 
       name: playlistName(radioValue),
     }
 

@@ -71,7 +71,6 @@ const PageWithJSbasedForm = () => {
 
   return (
     <div className="container mx-auto">
-      { !status || !isPremium() && <Error /> }
       { status && isPremium() &&
         <form onSubmit={handleSubmit} className="text-center">
           <div className="container mx-auto mt-1 mb-8 w-[70%] md:w-[60%] md:max-w-[320px]
@@ -101,6 +100,7 @@ const PageWithJSbasedForm = () => {
       }
       { status && isPremium() && searching && artists.length > 0 && <Results artists={artists} /> }
       { status && isPremium() && searching && artists.length === 0 && <NoResults /> }
+      { !status || !isPremium() && <Error /> }
     </div>
   )
 }
