@@ -42,28 +42,6 @@ const PageWithJSbasedForm = () => {
     setArtists(results.data)
   }
 
-  if (session && session.status != 'loading') {
-    const data = {
-      token: token
-    }
-  
-    const JSONdata = JSON.stringify(data)
-    const endpoint = '/api/user'
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSONdata,
-    }
-  
-    fetch(endpoint, options).then((response) => {
-      return response.json()
-    }).then((response) => {
-      setUserProduct(response.data.product)
-    })
-  }
-
   return (
     <div className="container mx-auto">
       { status &&
