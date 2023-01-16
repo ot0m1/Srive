@@ -14,7 +14,7 @@ const Playlist = async (req: NextApiRequest, res: NextApiResponse) => {
   const data = {
     name: playlistName,
     description: 'Playlist created by Srive',
-    public: 'false',
+    public: false,
   }
 
   const response = await axios({
