@@ -22,7 +22,9 @@ const ResultArtists: NextPage<Props> = ({ artist, index }) => {
       data-index={index}
       className="cursor-pointer border-b mb-1 py-1 pl-1 border-slate-100/30 flex items-center rounded hover:bg-slate-200/20 hover:text-slate-50"
     >
-      <div className="relative h-[46px] w-[46px]">
+      <div
+        className="relative h-[46px] w-[46px] mr-[12px]"
+      >
         <Image
           src={artistImage()}
           alt='artist-image'
@@ -32,7 +34,7 @@ const ResultArtists: NextPage<Props> = ({ artist, index }) => {
                 (max-width: 46px)"
         />
       </div>
-      &nbsp;&nbsp;&nbsp;{artist.name}
+      {artist.name}
     </div>
   )
 }
