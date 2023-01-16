@@ -9,7 +9,6 @@ const PageWithJSbasedForm = () => {
   const [artists, setArtists] = useState([])
   const [searching, setSearching] = useState(false)
   const [status, setStatus] = useState(true)
-  const [userProduct, setUserProduct] = useState('')
   const session: any = useSession()
   const token = session.data.token.accessToken
   
@@ -64,11 +63,6 @@ const PageWithJSbasedForm = () => {
       setUserProduct(response.data.product)
     })
   }
-
-  // 一旦コメントアウト
-  // const isPremium = () => {
-  //   return userProduct === 'premium' ? true : false
-  // }
 
   return (
     <div className="container mx-auto">
