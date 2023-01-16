@@ -50,7 +50,7 @@ export const authOptions: any = {
         url: 'https://accounts.spotify.com/authorize',
         params: 
           {
-            scope: 'playlist-modify-private,playlist-read-private,playlist-read-collaborative,user-read-private',
+            scope: 'playlist-modify-private,playlist-read-private',
             show_dialog: true,
           }
       },
