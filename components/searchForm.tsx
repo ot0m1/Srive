@@ -9,7 +9,6 @@ const PageWithJSbasedForm = () => {
   const [artists, setArtists] = useState([])
   const [searching, setSearching] = useState(false)
   const [status, setStatus] = useState(true)
-  const [userProduct, setUserProduct] = useState('')
   const session: any = useSession()
   const token = session.data.token.accessToken
   
@@ -42,33 +41,6 @@ const PageWithJSbasedForm = () => {
     setSearching(true)
     setArtists(results.data)
   }
-
-  if (session && session.status != 'loading') {
-    const data = {
-      token: token
-    }
-  
-    const JSONdata = JSON.stringify(data)
-    const endpoint = '/api/user'
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSONdata,
-    }
-  
-    fetch(endpoint, options).then((response) => {
-      return response.json()
-    }).then((response) => {
-      setUserProduct(response.data.product)
-    })
-  }
-
-  // 一旦コメントアウト
-  // const isPremium = () => {
-  //   return userProduct === 'premium' ? true : false
-  // }
 
   return (
     <div className="container mx-auto">
