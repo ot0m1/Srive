@@ -68,7 +68,10 @@ const Results: NextPage<Props> = ({ artists }) => {
               <ul className="list-none">
                 {artists.map((artist: any, index: number) => {
                   return (
-                    <li key={index}>
+                    <li
+                      key={index}
+                      className="border-b border-slate-100/30"
+                    >
                       <ResultArtists artist={artist} index={index}/>
                     </li>
                   )
