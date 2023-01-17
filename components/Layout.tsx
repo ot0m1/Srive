@@ -12,7 +12,7 @@ const Layout = ({ children }: Props) => {
     <div className="container mx-auto md:w-[60%] flex flex-col min-h-screen">
       <Header />
       <main className="flex-grow">
-        <section className="container mx-auto w-[90%] text-center">
+        <section className="container mx-auto px-4 text-center">
           <TitleArea />
           { children }
         </section>
