@@ -54,7 +54,7 @@ const PageWithJSbasedForm = () => {
               name="artist"
               required
               placeholder="Search Artists"
-              className="w-[90%] pl-[5px] pb-[2px] border-none bg-transparent caret-slate-200 focus:outline-none"
+              className="w-[90%] pl-[5px] pb-[2px] border-none bg-transparent caret-slate-200 focus:outline-none focus:bg-transparent"
             />
             <button
               type="submit"
