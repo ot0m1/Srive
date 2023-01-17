@@ -12,7 +12,7 @@ const TitleArea: NextPage = () => {
   }
 
   return (
-    <ul className="flex justify-center mb-6">
+    <ul className="flex justify-center mt-4 mb-6">
       <li>
         <div
           className="cursor-pointer mt-[18px] mr-[12px]"

@@ -4,7 +4,7 @@ import { signIn } from 'next-auth/react'
 const LogIn = () => {
   return <>
     <div className="mt-3 mb-4">
-      <h1 className="mt-14 mb-8 font-extrabold text-3xl">Whait is Srive</h1>
+      <h1 className="mt-4 lg:mt-14 mb-8 font-extrabold text-3xl">Whait is Srive</h1>
       <p className="mt-2 text-left">
         Srive is an application that solves the problem of not being able to listen to a particular artist&apos;s songs in succession on the iphone spotify application.
         <br /><br />
