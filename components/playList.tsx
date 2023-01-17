@@ -1,7 +1,7 @@
 import type { NextPage } from 'next' 
 import React, { useContext, useState } from 'react'
 import { TracksContext } from '../sriveContexts'
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { useSession } from 'next-auth/react'
 import Profile from './profile'
 import Error from './error'
@@ -217,7 +217,10 @@ const Playlist: NextPage = () => {
                     alt='spotify-logo'
                     width={26}
                     height={26}
-                  />
+                    style={{
+                      maxWidth: "100%",
+                      height: "auto"
+                    }} />
                 </li>
                 <li className="font-bold">
                   Create a playlist
@@ -227,57 +230,58 @@ const Playlist: NextPage = () => {
           </form>
         </ul>
       </div>
-    )
+    );
   }
 
   if (!status) {
     return (<Error />)
   }
 
-  return (
-    <>
-      <Profile />
-      { (tracks.singles.length === 50 || tracks.albums.length === 50) ?
-        <p className="text-sm mt-1 mb-4 max-w-90% mx-auto text-center">
-          Due to API specifications, a maximum of 50 singles and 50 albums each can be added to the playlist.
-        </p>
-        :
-        <></>
-      }
-      { hasSinglesOrAlbums() && <PlayListForm /> }
-      { isLoading && <Loading />}
-      { !isLoading && getPlayListUrl() != '' && currentArtistId === tracks.artist.id &&
-        <p>
-            <a
-              href={ getPlayListUrl() }
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-            <button
-              type="button"
-              className="w-[260px] py-4 mt-5 px-1 border border-slate-100/60 bg-slate-200/10 rounded
-                hover:bg-slate-200/30 hover:border-slate-100 hover:text-slate-50"
-                onClick={() => tracks.playlistId = ''}
-            >
-              <ul className="flex justify-center">
-                <li className="mr-2">
-                  <Image
-                    src='/Spotify_Icon_CMYK_Green.png'
-                    alt='spotify-logo'
-                    width={26}
-                    height={26}
-                  />
-                </li>
-                <li className="font-bold">
-                  Open a playlist in Spotify
-                </li>
-              </ul>
-            </button>
-          </a>
-        </p>
-      }
-    </>
-  )
+  return <>
+    <Profile />
+    { (tracks.singles.length === 50 || tracks.albums.length === 50) ?
+      <p className="text-sm mt-1 mb-4 max-w-90% mx-auto text-center">
+        Due to API specifications, a maximum of 50 singles and 50 albums each can be added to the playlist.
+      </p>
+      :
+      <></>
+    }
+    { hasSinglesOrAlbums() && <PlayListForm /> }
+    { isLoading && <Loading />}
+    { !isLoading && getPlayListUrl() != '' && currentArtistId === tracks.artist.id &&
+      <p>
+          <a
+            href={ getPlayListUrl() }
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+          <button
+            type="button"
+            className="w-[260px] py-4 mt-5 px-1 border border-slate-100/60 bg-slate-200/10 rounded
+              hover:bg-slate-200/30 hover:border-slate-100 hover:text-slate-50"
+              onClick={() => tracks.playlistId = ''}
+          >
+            <ul className="flex justify-center">
+              <li className="mr-2">
+                <Image
+                  src='/Spotify_Icon_CMYK_Green.png'
+                  alt='spotify-logo'
+                  width={26}
+                  height={26}
+                  style={{
+                    maxWidth: "100%",
+                    height: "auto"
+                  }} />
+              </li>
+              <li className="font-bold">
+                Open a playlist in Spotify
+              </li>
+            </ul>
+          </button>
+        </a>
+      </p>
+    }
+  </>;
 }
 
 export default Playlist

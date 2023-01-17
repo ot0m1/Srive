@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import Image from "next/legacy/image";
+import Image from "next/image";
 import React, { useContext } from 'react'
 import { TracksContext } from '../sriveContexts'
 
@@ -28,15 +28,17 @@ const ResultArtists: NextPage<Props> = ({ artist, index }) => {
         <Image
           src={artistImage()}
           alt='artist-image'
-          layout="fill"
-          objectFit="contain"
-          sizes="(max-height: 46px),
-                (max-width: 46px)"
-        />
+          fill
+          // sizes="(max-height: 46px),
+          //       (max-width: 46px)"
+          sizes="width: 46px"
+          style={{
+            objectFit: "contain"
+          }} />
       </div>
       {artist.name}
     </div>
-  )
+  );
 }
 
 export default ResultArtists
