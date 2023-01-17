@@ -5,7 +5,7 @@ import Layout from '../components/Layout'
 const Policy: NextPage = () => {
   return (
     <Layout>
-      <div className="mt-3 mb-4 leading-relaxed tracking-wider">
+      <div className="mt-3 mb-4 leading-7 tracking-wider">
         <h1 className="font-extrabold text-3xl mt-12 mb-8">プライバシーポリシー</h1>
         <p className="mt-2">
           <p className="text-left">

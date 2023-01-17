@@ -64,7 +64,7 @@ const Results: NextPage<Props> = ({ artists }) => {
       { status &&
         <TracksContext.Provider value={{tracks, getTracks}}>
             <div className="container mx-auto max-h-[140px] w-full max-w-[600px] md:max-h-[200px]
-              sm:max-w-[520px] mb-3 px-2 py-1 border border-slate-100/60 bg-slate-200/10 rounded overflow-scroll">
+              sm:max-w-[520px] mb-3 px-2 py-1 border border-slate-100/60 bg-slate-200/10 rounded overflow-y-auto">
               <ul className="list-none">
                 {artists.map((artist: any, index: number) => {
                   return (
