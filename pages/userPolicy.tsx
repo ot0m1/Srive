@@ -6,12 +6,12 @@ const Policy: NextPage = () => {
   return (
     <Layout>
       <div className="mt-3 mb-4 leading-relaxed tracking-wider">
-        <h1 className="font-extrabold text-3xl mt-6 mb-4 border-b pb-1 border-slate-100/30">プライバシーポリシー</h1>
+        <h1 className="font-extrabold text-3xl mt-12 mb-8">プライバシーポリシー</h1>
         <p className="mt-2">
           <p className="text-left">
             本プライバシーポリシーは、本サービスを利用するすべてのユーザーに適用されます。
           </p>
-          <h2 className="font-extrabold text-2xl mt-6 mb-4 border-b pb-1 border-slate-100/30">ユーザーから取得する情報</h2>
+          <h2 className="text-left font-extrabold text-2xl mt-8 mb-6 border-b pb-2 border-slate-100/30">ユーザーから取得する情報</h2>
           <p className="text-left">
             本サービスは、ユーザーから以下の情報を取得します。
             <ul className="list-disc">
@@ -31,32 +31,32 @@ const Policy: NextPage = () => {
               </a>
             </p>
           </p>
-          <h2 className="font-extrabold text-2xl mt-6 mb-4 border-b pb-1 border-slate-100/30">ユーザーの情報を利用する目的</h2>
+          <h2 className="text-left font-extrabold text-2xl mt-8 mb-6 border-b pb-2 border-slate-100/30">ユーザーの情報を利用する目的</h2>
             <p className="text-left">
               本サービスは、ユーザーから取得した情報を、以下の目的のために利用します。
               <ul className="list-disc">
                 <li className="ml-6">本サービスを利用するユーザーのSpotifyアカウントの認可のため</li>
               </ul>
             </p>
-          <h2 className="font-extrabold text-2xl mt-6 mb-4 border-b pb-1 border-slate-100/30">プライバシーポリシーの変更</h2>
+          <h2 className="text-left font-extrabold text-2xl mt-8 mb-6 border-b pb-2 border-slate-100/30">プライバシーポリシーの変更</h2>
             <p className="text-left">
               本サービスは、必要に応じて、このプライバシーポリシーの内容を変更します。
               <br />
               この場合、変更後のプライバシーポリシーの施行時期と内容を適切な方法により周知または通知します。
             </p>
           </p>
-        <h1 className="font-extrabold text-3xl mt-6 mb-4 border-b pb-1 border-slate-100/30">利用規約</h1>
+        <h1 className="font-extrabold text-3xl mt-12 mb-8">利用規約</h1>
         <p className="mt-2">
           <p className="text-left">
             この利用規約(以下、「本規約」といいます。)は、本サービス(本サイトを含むものとし、以下、特に両者を区別しません。)の利用条件を定めるものです。
             <br />
             本規約は、本サービスを利用するすべてのユーザーに適用されます。
           </p>
-          <h2 className="font-extrabold text-2xl mt-6 mb-4 border-b pb-1 border-slate-100/30">本規約への同意</h2>
+          <h2 className="text-left font-extrabold text-2xl mt-8 mb-6 border-b pb-2 border-slate-100/30">本規約への同意</h2>
             <p className="text-left">
               ユーザーは、本サービスを利用することによって、本規約に有効かつ取り消し不能な同意をしたものとみなされます。本規約に同意しないユーザーは、本サービスをご利用いただけません。
             </p>
-          <h2 className="font-extrabold text-2xl mt-6 mb-4 border-b pb-1 border-slate-100/30">コンテンツのご利用</h2>
+          <h2 className="text-left font-extrabold text-2xl mt-8 mb-6 border-b pb-2 border-slate-100/30">コンテンツのご利用</h2>
             <p className="text-left">
               本サービスは、ユーザーに対し、本サービスが提供する文章、画像、動画、音声、音楽、ソフトウェア、プログラム、コードその他のコンテンツについて、本サービスの利用範囲内における私的な利用を許諾します。
               <br />
@@ -64,7 +64,7 @@ const Policy: NextPage = () => {
               <br />
               理由の如何を問わず、ユーザーが本サービスを利用する権利を失った場合、本サービスの一切のコンテンツの利用ができなくなることを、ユーザーは予め承諾するものとします。
             </p>
-          <h2 className="font-extrabold text-2xl mt-6 mb-4 border-b pb-1 border-slate-100/30">禁止事項</h2>
+          <h2 className="text-left font-extrabold text-2xl mt-8 mb-6 border-b pb-2 border-slate-100/30">禁止事項</h2>
             <p className="text-left">ユーザーは、本サービスの利用にあたり、以下の行為をしてはなりません。
               <ul className="list-disc">
                 <li className="ml-6">法令、裁判所の判決、決定若しくは命令、又は法令上拘束力のある行政措置に違反する行為又はこれらを助長する行為</li>
@@ -92,7 +92,7 @@ const Policy: NextPage = () => {
                 <li className="ml-6">その他、本サービスが不適切と判断する行為</li>
               </ul>
             </p>
-          <h2 className="font-extrabold text-2xl mt-6 mb-4 border-b pb-1 border-slate-100/30">換金行為の禁止</h2>
+          <h2 className="text-left font-extrabold text-2xl mt-8 mb-6 border-b pb-2 border-slate-100/30">換金行為の禁止</h2>
             <p className="text-left">本サービス内で取得した一切のコンテンツについては、手段の如何を問わず、以下の取引を一切禁止します。
               <ul className="list-disc">
                 <li className="ml-6">売買</li>
@@ -100,7 +100,7 @@ const Policy: NextPage = () => {
                 <li className="ml-6">その他換金行為に該当すると本サービスが判断する一切の行為</li>
               </ul>
             </p>
-          <h2 className="font-extrabold text-2xl mt-6 mb-4 border-b pb-1 border-slate-100/30">反社会的勢力の排除</h2>
+          <h2 className="text-left font-extrabold text-2xl mt-8 mb-6 border-b pb-2 border-slate-100/30">反社会的勢力の排除</h2>
             <p className="text-left">ユーザーは、次の各号のいずれか一にも該当しないことを表明し、かつ将来にわたっても該当しないことを表明し、保証するものとします。
               <ul className="list-disc">
                 <li className="ml-6">ユーザーは、自らまたは第三者を利用して次の各号のいずれか一にでも該当する行為を行わないことを保証するものとします。</li>
@@ -111,7 +111,7 @@ const Policy: NextPage = () => {
                 <li className="ml-6">その他前各号に準ずる行為</li>
               </ul>
             </p>
-          <h2 className="font-extrabold text-2xl mt-6 mb-4 border-b pb-1 border-slate-100/30">利用制限</h2>
+          <h2 className="text-left font-extrabold text-2xl mt-8 mb-6 border-b pb-2 border-slate-100/30">利用制限</h2>
             <p className="text-left">
               本サービスは、ユーザーが以下のいずれかに該当する場合には、事前の通知なく、ユーザーに対して、本サービスの全部もしくは一部の利用を制限できるものとします。
               <br />
@@ -123,7 +123,7 @@ const Policy: NextPage = () => {
                 <li className="ml-6">その他、本サービスが本サービスの利用を適当でないと判断した場合</li>
               </ul>
             </p>
-          <h2 className="font-extrabold text-2xl mt-6 mb-4 border-b pb-1 border-slate-100/30">本サービスの提供の停止</h2>
+          <h2 className="text-left font-extrabold text-2xl mt-8 mb-6 border-b pb-2 border-slate-100/30">本サービスの提供の停止</h2>
             <p className="text-left">
               本サービスは、以下のいずれかの事由があると判断した場合、ユーザーに事前に通知することなく本サービスの全部または一部の提供を停止または中断することができるものとします。
               <br />
@@ -135,13 +135,13 @@ const Policy: NextPage = () => {
                 <li className="ml-6">その他、本サービスが本サービスの提供が困難と判断した場合</li>
               </ul>
             </p>
-          <h2 className="font-extrabold text-2xl mt-6 mb-4 border-b pb-1 border-slate-100/30">保証の否認</h2>
+          <h2 className="text-left font-extrabold text-2xl mt-8 mb-6 border-b pb-2 border-slate-100/30">保証の否認</h2>
             <p className="text-left">
               本サービスは、本サービスや本サービスが提供するコンテンツに、システムバグや第三者の権利侵害が含まれないことを保証するものではありません。
               <br />
               また、安全性、信頼性、正確性、完全性、有効性、特定の目的への適合性を保証するものでもありません。
             </p>
-          <h2 className="font-extrabold text-2xl mt-6 mb-4 border-b pb-1 border-slate-100/30">免責</h2>
+          <h2 className="text-left font-extrabold text-2xl mt-8 mb-6 border-b pb-2 border-slate-100/30">免責</h2>
             <p className="text-left">
               本サービスは、本サービスに関してユーザーに生じたあらゆる損害について一切の責任を負いません。
               <br />
@@ -153,7 +153,7 @@ const Policy: NextPage = () => {
               <br />
               本サービスは、本サービスに関してユーザーが被った損害につき、当該損害が発生した月内にユーザーが本サービスに支払った利用料金を超えて賠償する責任を負わないものとします。
             </p>
-          <h2 className="font-extrabold text-2xl mt-6 mb-4 border-b pb-1 border-slate-100/30">サービス内容の変更</h2>
+          <h2 className="text-left font-extrabold text-2xl mt-8 mb-6 border-b pb-2 border-slate-100/30">サービス内容の変更</h2>
             <p className="text-left">
               本サービスは、ユーザーに通知することなく、本サービスの内容を変更したり、本サービスの提供を中止、終了することができるものとします。
               <br />
@@ -161,7 +161,7 @@ const Policy: NextPage = () => {
               <br />
               本サービスは、これらによってユーザーに生じた損害について一切の責任を負いません。
             </p>
-          <h2 className="font-extrabold text-2xl mt-6 mb-4 border-b pb-1 border-slate-100/30">利用規約の変更</h2>
+          <h2 className="text-left font-extrabold text-2xl mt-8 mb-6 border-b pb-2 border-slate-100/30">利用規約の変更</h2>
             <p className="text-left">
               本サービスは、ユーザーに通知することなく、いつでも本規約を変更することができるものとします。
               <br />
@@ -169,7 +169,7 @@ const Policy: NextPage = () => {
               <br />
               本規約の変更後、本サービスの利用を継続したユーザーは、変更後の本規約に同意したものとみなします。
             </p>
-          <h2 className="font-extrabold text-2xl mt-6 mb-4 border-b pb-1 border-slate-100/30">適用関係</h2>
+          <h2 className="text-left font-extrabold text-2xl mt-8 mb-6 border-b pb-2 border-slate-100/30">適用関係</h2>
             <p className="text-left">
               本規約は、ユーザーと本サービスとの間の本サービスの利用に関わる一切の関係に適用されるものとします。
               <br />
@@ -177,11 +177,11 @@ const Policy: NextPage = () => {
               <br />
               これらのルールは、その名称のいかんに関わらず、本規約の一部を構成するものとします。本規約がこれらのルールと矛盾する場合には、これらのルールが優先して適用されるものとします。
             </p>
-          <h2 className="font-extrabold text-2xl mt-6 mb-4 border-b pb-1 border-slate-100/30">分離可能性</h2>
+          <h2 className="text-left font-extrabold text-2xl mt-8 mb-6 border-b pb-2 border-slate-100/30">分離可能性</h2>
             <p className="text-left">
               本規約のいずれかの条項又はその一部が無効又は執行不能と判断された場合であっても、当該判断は他の部分に影響を及ぼさず、本規約の残りの部分は、引き続き有効かつ執行力を有するものとします。
             </p>
-          <h2 className="font-extrabold text-2xl mt-6 mb-4 border-b pb-1 border-slate-100/30">準拠法・裁判管轄</h2>
+          <h2 className="text-left font-extrabold text-2xl mt-8 mb-6 border-b pb-2 border-slate-100/30">準拠法・裁判管轄</h2>
             <p className="text-left">
               本規約の解釈にあたっては、日本法を準拠法とします。
               <br />
