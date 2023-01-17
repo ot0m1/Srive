@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Results from './results'
 import NoResults from './noResults'
 import Error from './error'
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { useSession } from 'next-auth/react'
 
 const PageWithJSbasedForm = () => {
@@ -54,7 +54,7 @@ const PageWithJSbasedForm = () => {
               name="artist"
               required
               placeholder="Search Artists"
-              className="w-[90%] pl-[5px] pb-[2px] border-none bg-transparent caret-slate-200 focus:outline-none"
+              className="w-[90%] pl-[5px] pb-[2px] border-none bg-transparent caret-slate-200 focus:outline-none focus:bg-transparent"
             />
             <button
               type="submit"
@@ -66,7 +66,10 @@ const PageWithJSbasedForm = () => {
                 alt='srive-logo'
                 width={16}
                 height={16}
-              />
+                style={{
+                  maxWidth: "100%",
+                  height: "auto"
+                }} />
             </button>
           </div>
         </form>
@@ -75,7 +78,7 @@ const PageWithJSbasedForm = () => {
       { status && searching && artists.length === 0 && <NoResults /> }
       { !status && <Error /> }
     </div>
-  )
+  );
 }
 
 export default PageWithJSbasedForm

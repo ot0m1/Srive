@@ -1,7 +1,7 @@
 import type { NextPage } from 'next' 
 import React, { useContext, useState } from 'react'
 import { TracksContext } from '../sriveContexts'
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { useSession } from 'next-auth/react'
 import Profile from './profile'
 import Error from './error'
@@ -177,10 +177,10 @@ const Playlist: NextPage = () => {
       <div
         className="container mx-auto w-full md:max-w-[520px] text-center"
       >
-        <ul>
+        <div>
           <form onSubmit={createPlaylist}>
             {valueList.map((item, index) => (
-              <li
+              <div
                 key={index}
                 className="mb-4 w-[200px] container mx-auto rounded"
               >
@@ -194,90 +194,100 @@ const Playlist: NextPage = () => {
                   />
                 <label
                   htmlFor={item.value}
-                  className="py-[5px] inline-block w-full cursor-pointer rounded opacity-50 hover:bg-slate-200/20 border
+                  className="mb-1 py-[5px] inline-block w-full cursor-pointer rounded opacity-50 hover:bg-slate-200/20 border
                     peer-checked:bg-slate-200/30 peer-checked:opacity-100 peer-checked:font-semibold peer-checked:border-slate-100 peer-checked:text-slate-50"
                 >
-                  &nbsp;&nbsp;{item.name}
+                  {item.name}
                 </label>
-              </li>
+              </div>
             ))}
-            <br />
             <button
               type="submit"
-              className="w-[260px] py-4 border border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/30 hover:border-slate-100 hover:text-slate-50"
+              className="w-[260px] mt-3 py-4 border border-slate-100/60 bg-slate-200/10 rounded hover:bg-slate-200/30 hover:border-slate-100 hover:text-slate-50"
               onClick={() => setArtistId(tracks.artist.id)}
               onMouseEnter={() => setArtistId(tracks.artist.id)}
               onTouchStart={() => setArtistId(tracks.artist.id)}
             >
-              <ul className="flex justify-center">
-                <li className="mr-2">
+              <div className="flex justify-center">
+                <div className="mr-2">
                   <Image
                     className="opacity-75"
                     src='/Spotify_Icon_CMYK_White.png'
                     alt='spotify-logo'
                     width={26}
                     height={26}
-                  />
-                </li>
-                <li className="font-bold">
+                    style={{
+                      maxWidth: "100%",
+                      height: "auto"
+                    }} />
+                </div>
+                <span className="font-bold">
                   Create a playlist
-                </li>
-              </ul>
+                </span>
+              </div>
             </button>
           </form>
-        </ul>
+        </div>
       </div>
-    )
+    );
   }
 
   if (!status) {
     return (<Error />)
   }
 
-  return (
-    <>
-      <Profile />
-      { (tracks.singles.length === 50 || tracks.albums.length === 50) ?
-        <p className="text-sm mt-1 mb-4 max-w-90% mx-auto text-center">
-          Due to API specifications, a maximum of 50 singles and 50 albums each can be added to the playlist.
-        </p>
+  return <>
+    <Profile />
+    <p className="text-center mx-auto mt-4 mb-3">
+      {hasSinglesOrAlbums() ?
+        <span>Create playlist with the artist you searched for</span>
         :
-        <></>
+        <span>No songs found. It is possible that the artist participated only in the compilation album or it could be a public playlist.</span>
       }
-      { hasSinglesOrAlbums() && <PlayListForm /> }
-      { isLoading && <Loading />}
-      { !isLoading && getPlayListUrl() != '' && currentArtistId === tracks.artist.id &&
-        <p>
-            <a
-              href={ getPlayListUrl() }
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-            <button
-              type="button"
-              className="w-[260px] py-4 mt-5 px-1 border border-slate-100/60 bg-slate-200/10 rounded
-                hover:bg-slate-200/30 hover:border-slate-100 hover:text-slate-50"
-                onClick={() => tracks.playlistId = ''}
-            >
-              <ul className="flex justify-center">
-                <li className="mr-2">
-                  <Image
-                    src='/Spotify_Icon_CMYK_Green.png'
-                    alt='spotify-logo'
-                    width={26}
-                    height={26}
-                  />
-                </li>
-                <li className="font-bold">
-                  Open a playlist in Spotify
-                </li>
-              </ul>
-            </button>
-          </a>
-        </p>
-      }
-    </>
-  )
+    </p>
+    { (tracks.singles.length === 50 || tracks.albums.length === 50) ?
+      <p className="text-sm mt-1 mb-4 max-w-90% mx-auto text-center">
+        Due to API specifications, a maximum of 50 singles and 50 albums each can be added to the playlist.
+      </p>
+      :
+      <></>
+    }
+    { hasSinglesOrAlbums() && <PlayListForm /> }
+    { isLoading && <Loading />}
+    { !isLoading && getPlayListUrl() != '' && currentArtistId === tracks.artist.id &&
+      <p>
+          <a
+            href={ getPlayListUrl() }
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+          <button
+            type="button"
+            className="w-[260px] py-4 mt-5 px-1 border border-slate-100/60 bg-slate-200/10 rounded
+              hover:bg-slate-200/30 hover:border-slate-100 hover:text-slate-50"
+              onClick={() => tracks.playlistId = ''}
+          >
+            <ul className="flex justify-center">
+              <li className="mr-2">
+                <Image
+                  src='/Spotify_Icon_CMYK_Green.png'
+                  alt='spotify-logo'
+                  width={26}
+                  height={26}
+                  style={{
+                    maxWidth: "100%",
+                    height: "auto"
+                  }} />
+              </li>
+              <li className="font-bold">
+                Open a playlist in Spotify
+              </li>
+            </ul>
+          </button>
+        </a>
+      </p>
+    }
+  </>;
 }
 
 export default Playlist

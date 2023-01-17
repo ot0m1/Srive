@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 const NoResults: NextPage = () => {
   return (
@@ -11,10 +11,13 @@ const NoResults: NextPage = () => {
         width={160}
         height={160}
         className="mx-auto opacity-70 my-6"
-      />
+        style={{
+          maxWidth: "100%",
+          height: "auto"
+        }} />
       <p>Artist not found. Please try searching for other names.</p>
     </div>
-  )
+  );
 }
 
 export default NoResults

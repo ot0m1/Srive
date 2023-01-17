@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import React from 'react'
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { useSession, signOut } from 'next-auth/react'
 import router from 'next/router'
 
@@ -23,7 +23,10 @@ const TitleArea: NextPage = () => {
             alt='srive-logo'
             width={36}
             height={36}
-          />
+            style={{
+              maxWidth: "100%",
+              height: "auto"
+            }} />
         </div>
       </li>
       <li >
@@ -51,7 +54,7 @@ const TitleArea: NextPage = () => {
         </li>
       }
     </ul>
-  )
+  );
 }
 
 export default TitleArea
