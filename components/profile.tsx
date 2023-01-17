@@ -6,9 +6,9 @@ import { TracksContext } from '../sriveContexts'
 const Profile: NextPage = () => {
   const {tracks} = useContext(TracksContext)
 
-  const hasSinglesOrAlbums = () => {
-    return (tracks.singles.length > 0 || tracks.albums.length) > 0 ? true : false
-  }
+  // const hasSinglesOrAlbums = () => {
+  //   return (tracks.singles.length > 0 || tracks.albums.length) > 0 ? true : false
+  // }
 
   const artistImage = () => {
     return (tracks.artist.images.length > 2) ? tracks.artist.images[1].url : '/no_image.png'
@@ -16,7 +16,7 @@ const Profile: NextPage = () => {
 
   return (
     <div className="container mx-auto my-2 w-full md:max-w-[520px]">
-      <div className="flex justify-center mt-1">
+      <div className="flex justify-center">
         <div className="mr-3 my-3 w-[96px]">
           <a
             href={tracks.artist.external_urls.spotify}
@@ -42,14 +42,6 @@ const Profile: NextPage = () => {
           </p>
         </div>
       </div>
-      <p
-        className="text-center mx-auto max-w-[500px]">
-        {hasSinglesOrAlbums() ?
-          <span>Create playlist with the artist you searched for</span>
-          :
-          <span>No songs found. It is possible that the artist participated only in the compilation album or it could be a public playlist.</span>
-        }
-      </p>
     </div>
   );
 }
