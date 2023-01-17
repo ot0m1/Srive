@@ -23,14 +23,12 @@ const Profile: NextPage = () => {
             title="Link to artist's spotify page"
             target="_blank"
             rel="noopener noreferrer"
-            className="block relative max-w-full h-[96px]"
+            className="block relative max-w-full min-w-[96px] h-[96px]"
           >
             <Image
               src={artistImage()}
               alt='artist-image'
               fill
-              sizes="(max-height: 96px),
-              (max-width: 96px)"
               style={{
                 objectFit: "contain"
               }} />
