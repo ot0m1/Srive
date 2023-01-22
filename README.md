@@ -30,7 +30,7 @@ Users can create playlists of singles, all songs including albums, etc. by simpl
 [https://srive.app/](https://srive.app/)
 ## Log in to Spotify
 
-![Log In](https://user-images.githubusercontent.com/6190966/208909065-2f2cff3f-2d7d-48b0-802d-99b08a6dc9d1.png)
+![Log In](https://user-images.githubusercontent.com/6190966/213918589-52580197-746a-4a09-a42b-f821c52b732e.png)
 
 ## Search Artists
 1. Enter the artist name in the search box.
