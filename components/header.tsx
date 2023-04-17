@@ -19,6 +19,7 @@ const Header: NextPage = () => {
         <meta name="twitter:card" content="app" />
         <meta name="twitter:site" content="@ot0m1" />
         <link rel="icon" href="/srive_gray_e2e8f0_22do.png" />
+        <link rel="apple-touch-icon" href="/srive_gray_e2e8f0_22do.png" />
       </Head>
     </>
   )
