@@ -6,10 +6,6 @@ import { TracksContext } from '../sriveContexts'
 const Profile: NextPage = () => {
   const {tracks} = useContext(TracksContext)
 
-  // const hasSinglesOrAlbums = () => {
-  //   return (tracks.singles.length > 0 || tracks.albums.length) > 0 ? true : false
-  // }
-
   const artistImage = () => {
     return (tracks.artist.images.length > 2) ? tracks.artist.images[1].url : '/no_image.png'
   }
@@ -38,7 +34,7 @@ const Profile: NextPage = () => {
           <p className="text-left">
             <a className="font-semibold">{tracks.artist.name}</a>
             <br />
-            {tracks.singles.length} Singles {tracks.albums.length} Albums
+            {tracks.singles.length} Singles {tracks.albums.length} Albums {tracks.appearsOnAndCompilation.length} Others
           </p>
         </div>
       </div>
