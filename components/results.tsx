@@ -14,6 +14,7 @@ const Results: NextPage<Props> = ({ artists }) => {
   const [tracks, setTracks] = useState({
     'singles': [],
     'albums': [],
+    'appearsOnAndCompilation': [],
     'artist': [],
     'playlistId': ''
   })
@@ -47,6 +48,7 @@ const Results: NextPage<Props> = ({ artists }) => {
       setTracks({
         'singles': results.data.singles.items,
         'albums': results.data.albums.items,
+        'appearsOnAndCompilation': results.data.appearsOnAndCompilation.items,
         'artist': artists[index],
         'playlistId': ''
       })

@@ -4,6 +4,7 @@ export const TracksContext = createContext({} as {
   tracks: {
     'singles': any,
     'albums': any,
+    'appearsOnAndCompilation': any,
     'artist': any,
     'playlistId': string,
   }

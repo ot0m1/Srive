@@ -6,10 +6,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const singles = await getTracks(body.token, body.id, 'single')
   const albums = await getTracks(body.token, body.id, 'album')
+  const appearsOnAndCompilation = await getTracks(body.token, body.id, 'appears_on,compilation')
 
   const result = {
     'singles': singles.data,
     'albums': albums.data,
+    'appearsOnAndCompilation': appearsOnAndCompilation.data,
   }
 
   res.status(albums.status).json({ data: result })

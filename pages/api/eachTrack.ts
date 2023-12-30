@@ -5,13 +5,14 @@ const EachTrack = async (req: NextApiRequest, res: NextApiResponse) => {
   const body = req.body
   const token = body.token
   const ids = body.ids
+  const artistId = body.artistId
 
-  const [status, uris] = await getTrackId(token, ids)
+  const [status, uris] = await getTrackId(token, ids, artistId)
 
   res.status(status).json({ uris: uris })
 }
 
-const getTrackId = async (token: any, ids: any) => {
+const getTrackId = async (token: any, ids: any, artistId: string) => {
   let albums: any = []
   let tracks: any = []
   let uris: any = []
@@ -39,9 +40,8 @@ const getTrackId = async (token: any, ids: any) => {
     tracks = tracks.concat(album.tracks.items)
   }
 
-  for (const track of tracks) {
-    uris = uris.concat(track.uri)
-  }
+  uris = tracks.filter((track: any) => track.artists.some((artist: any) => artist.id === artistId))
+          .map((track: any) => track.uri);
 
   uris = chunk(uris, 100)
 

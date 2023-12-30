@@ -9,7 +9,7 @@ import Loading from './loading'
 
 const Playlist: NextPage = () => {
   const {tracks} = useContext(TracksContext)
-  const [radioValue, setRadioValue] = useState('single')
+  const [radioValue, setRadioValue] = useState('allsongs')
   const [currentArtistId, setArtistId] = useState(tracks.artist.id)
   const [status, setStatus] = useState(true)
   const [isLoading, setLoading] = useState(false)
@@ -85,6 +85,7 @@ const Playlist: NextPage = () => {
     const data = {
       token: token,
       ids: ids(),
+      artistId: currentArtistId,
     }
   
     const JSONdata = JSON.stringify(data)
@@ -119,6 +120,11 @@ const Playlist: NextPage = () => {
     }
 
     switch(radioValue) {
+      case 'allsongs':
+        pushToIds(tracks.singles)
+        pushToIds(tracks.albums)
+        pushToIds(tracks.appearsOnAndCompilation)
+        break
       case 'single':
         pushToIds(tracks.singles)
         break
@@ -148,6 +154,9 @@ const Playlist: NextPage = () => {
     const date = today.getDate()
     let type = ''
     switch(radioValue) {
+      case 'allsongs':
+        type = 'All Songs'
+        break
       case 'single':
         type = 'Singles'
         break
@@ -155,7 +164,7 @@ const Playlist: NextPage = () => {
         type = 'Albums'
         break
       case 'singleandalbum':
-        type = 'SinglesAndAlbums'
+        type = 'Singles And Albums'
         break
     }
 
@@ -168,6 +177,7 @@ const Playlist: NextPage = () => {
 
   const PlayListForm = () => {
     const valueList = [
+      {'value': 'allsongs', 'name': 'All Songs'},
       {'value': 'single', 'name': 'Singles only'},
       {'value': 'album', 'name': 'Albums only'},
       {'value': 'singleandalbum', 'name': 'Singles and Albums'},
@@ -182,7 +192,7 @@ const Playlist: NextPage = () => {
             {valueList.map((item, index) => (
               <div
                 key={index}
-                className="mb-4 w-[200px] container mx-auto rounded"
+                className="mb-3 w-[200px] container mx-auto rounded"
               >
                 <input
                   type="radio"
