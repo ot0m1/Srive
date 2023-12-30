@@ -85,6 +85,7 @@ const Playlist: NextPage = () => {
     const data = {
       token: token,
       ids: ids(),
+      artistId: currentArtistId,
     }
   
     const JSONdata = JSON.stringify(data)
