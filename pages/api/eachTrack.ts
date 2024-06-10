@@ -41,9 +41,11 @@ const getTrackId = async (token: any, ids: any, artistId: string) => {
   }
 
   uris = tracks.filter((track: any) => track.artists.some((artist: any) => artist.id === artistId))
-          .map((track: any) => track.uri);
+          .map((track: any) => track.uri)
 
   uris = chunk(uris, 100)
+
+  console.log('Chunked URIs:', uris)
 
   return [status, uris]
 }
