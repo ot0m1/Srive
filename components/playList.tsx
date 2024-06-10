@@ -179,7 +179,7 @@ const Playlist: NextPage = () => {
       {'value': 'allsongs', 'name': 'All Songs'},
       {'value': 'single', 'name': 'Singles only'},
       {'value': 'album', 'name': 'Albums only'},
-      {'value': 'others', 'name': 'Others'},
+      {'value': 'others', 'name': 'Others only'},
     ]
     
     return (
