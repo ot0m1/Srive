@@ -17,7 +17,7 @@ const Playlist: NextPage = () => {
   const token = session.data.token.accessToken
 
   const hasSinglesOrAlbums = () => {
-    return (tracks.singles.length > 0 || tracks.albums.length) > 0 ? true : false
+    return (tracks.singles.length > 0 || tracks.albums.length > 0 || tracks.appearsOnAndCompilation.length > 0) ? true : false
   }
 
   const createPlaylist = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -131,9 +131,8 @@ const Playlist: NextPage = () => {
       case 'album':
         pushToIds(tracks.albums)
         break
-      case 'singleandalbum':
-        pushToIds(tracks.singles)
-        pushToIds(tracks.albums)
+      case 'others':
+        pushToIds(tracks.appearsOnAndCompilation)
         break
       }
 
@@ -163,8 +162,8 @@ const Playlist: NextPage = () => {
       case 'album':
         type = 'Albums'
         break
-      case 'singleandalbum':
-        type = 'Singles And Albums'
+      case 'others':
+        type = 'Others'
         break
     }
 
@@ -180,7 +179,7 @@ const Playlist: NextPage = () => {
       {'value': 'allsongs', 'name': 'All Songs'},
       {'value': 'single', 'name': 'Singles only'},
       {'value': 'album', 'name': 'Albums only'},
-      {'value': 'singleandalbum', 'name': 'Singles and Albums'},
+      {'value': 'others', 'name': 'Others'},
     ]
     
     return (
@@ -252,12 +251,12 @@ const Playlist: NextPage = () => {
       {hasSinglesOrAlbums() ?
         <span>Create playlist with the artist you searched for</span>
         :
-        <span>No songs found. It is possible that the artist participated only in the compilation album or it could be a public playlist.</span>
+        <span>No songs found. It is possible that it could be a public playlist.</span>
       }
     </p>
-    { (tracks.singles.length === 50 || tracks.albums.length === 50) ?
+    { (tracks.singles.length === 50 || tracks.albums.length === 50 || tracks.appearsOnAndCompilation.length === 50) ?
       <p className="text-sm mt-1 mb-4 max-w-90% mx-auto text-center">
-        Due to API specifications, a maximum of 50 singles and 50 albums each can be added to the playlist.
+        Due to API specifications, up to 50 copies of each can be added to the playlist.
       </p>
       :
       <></>
