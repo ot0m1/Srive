@@ -15,7 +15,7 @@ const Hundler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   for (const uri of uris) {
     let response = await addTracks(headers, playListId, uri)
-    if (response.status != 201) {
+    if (!/^2\d{2}$/.test(response.status.toString())) {
       status = response.status
       break
     }
