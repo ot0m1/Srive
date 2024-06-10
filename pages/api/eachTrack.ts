@@ -45,8 +45,6 @@ const getTrackId = async (token: any, ids: any, artistId: string) => {
 
   uris = chunk(uris, 100)
 
-  console.log('Chunked URIs:', uris)
-
   return [status, uris]
 }
 
