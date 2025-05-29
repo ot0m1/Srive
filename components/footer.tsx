@@ -13,8 +13,8 @@ const Footer: NextPage = () => {
           </a>
         </li>
         <li className="mx-1 ml-9 mt-2 md:ml-12 md:my-4">
-          <a href="https://twitter.com/ot0m1" target="_blank" rel="noopener noreferrer">
-            Twitter
+          <a href="https://x.com/ot0m1" target="_blank" rel="noopener noreferrer">
+            X
           </a>
         </li>
         <li className="mx-1 ml-9 mt-2 md:ml-12 md:my-4">
