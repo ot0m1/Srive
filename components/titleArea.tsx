@@ -32,7 +32,7 @@ const TitleArea: NextPage = () => {
       <li >
         <div>
           <h1
-            className="cursor-pointer my-2 text-center text-base font-black text-5xl"
+            className="cursor-pointer my-2 text-center text-5xl font-black"
             onClick={() => router.push('/')}
           >
             Srive
