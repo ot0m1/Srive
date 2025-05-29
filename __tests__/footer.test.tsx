@@ -6,7 +6,7 @@ describe('Footer', () => {
   test('Is the expected text displayed?', () => {
     render(<Footer />)
     expect(screen.getByText('GitHub')).toBeInTheDocument()
-    expect(screen.getByText('Twitter')).toBeInTheDocument()
+    expect(screen.getByText('X')).toBeInTheDocument()
     expect(screen.getByText('Blog')).toBeInTheDocument()
   })
 })
