@@ -17,7 +17,7 @@ describe('Layout', () => {
     render(<Layout>{<div>Test</div>}</Layout>)
     expect(screen.getByText('Test')).toBeInTheDocument()
     expect(screen.getByText('GitHub')).toBeInTheDocument()
-    expect(screen.getByText('Twitter')).toBeInTheDocument()
+    expect(screen.getByText('X')).toBeInTheDocument()
     expect(screen.getByText('Blog')).toBeInTheDocument()
   })
 })
