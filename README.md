@@ -55,14 +55,24 @@ Users can create playlists of singles, all songs including albums, etc. by simpl
 Enjoy!
 
 # To develop
-```
+```bash
 git clone https://github.com/ot0m1/Srive.git
 cd srive
 npm install
 npm run dev
 ```
 
-# Test
+or
+
+```bash
+git clone https://github.com/ot0m1/Srive.git
+cd srive
+docker compose build
+docker compose up
 ```
+
+
+# Test
+```bash
 npm run test
 ```
