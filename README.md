@@ -1,9 +1,18 @@
-# Srive
-[https://srive.app/](https://srive.app/)
+<p align="center">
+  <a href="https://srive.app/">
+    <br><br>
+    <img alt="Srive" src="https://user-images.githubusercontent.com/6190966/204440619-55f12b02-df13-4e6c-9b14-9597e9c91fd3.png" width="240">
+    <br><br>
+  </a>
+</p>
 
-Spotify + Drive = Srive
+<p align="center">
+  <strong>Srive</strong> — Spotify + Drive = Srive
+</p>
 
-![srive_gray_e2e8f0_22do](https://user-images.githubusercontent.com/6190966/204440619-55f12b02-df13-4e6c-9b14-9597e9c91fd3.png)
+<p align="center">
+  <a href="https://srive.app/">https://srive.app/</a>
+</p>
 
 It is very easy to create only singles or only albums playlists for Spotify artists.
 
