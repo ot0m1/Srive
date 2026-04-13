@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import axios from 'axios'
 
 const EachTrack = async (req: NextApiRequest, res: NextApiResponse) => {
   const body = req.body
@@ -20,16 +19,18 @@ const getTrackId = async (token: any, ids: any, artistId: string) => {
 
   for (const id of ids) {
     const severalId = id.join(',')
-    const response = await axios.get(`https://api.spotify.com/v1/albums`, {
-      params: {
-          'ids': severalId,
-      },
-      headers: {
-          Authorization: `Bearer ${token}`
-        }
-      })
+    const params = new URLSearchParams({
+      'ids': severalId,
+    })
 
-    albums = albums.concat(response.data.albums)
+    const response = await fetch(`https://api.spotify.com/v1/albums?${params}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+
+    const data = await response.json()
+    albums = albums.concat(data.albums)
     if (response.status != 200) {
       status = response.status
       break

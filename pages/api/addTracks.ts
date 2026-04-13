@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import axios from 'axios'
 
 const Handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const body = req.body
@@ -25,15 +24,10 @@ const Handler = async (req: NextApiRequest, res: NextApiResponse) => {
 }
 
 const addTracks = async(headers: {[key: string]: string}, playListId: string, uris: string[]) => {
-  const data = {
-    uris: uris,
-  }
-
-  const response = await axios({
+  const response = await fetch(`https://api.spotify.com/v1/playlists/${playListId}/tracks`, {
     method: 'POST',
-    url: `https://api.spotify.com/v1/playlists/${playListId}/tracks`,
     headers: headers,
-    data: data
+    body: JSON.stringify({ uris: uris }),
   })
 
   return response
