@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import axios from 'axios'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const body = req.body
@@ -8,16 +7,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 }
 
 async function searchSpotify(token: string, artistName: string) {
-  const response = await axios.get('https://api.spotify.com/v1/search', {
-    params: {
-        'query': artistName,
-        'type': 'artist',
-        'locale': 'ja'
-    },
-    headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
+  const params = new URLSearchParams({
+    'query': artistName,
+    'type': 'artist',
+    'locale': 'ja'
+  })
 
-  return response
+  const response = await fetch(`https://api.spotify.com/v1/search?${params}`, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+
+  return { status: response.status, data: await response.json() }
 }

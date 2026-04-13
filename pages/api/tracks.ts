@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import axios from 'axios'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const body = req.body
@@ -18,15 +17,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 }
 
 async function getTracks(token: string, id: string, groups: string = 'album,single') {
-  const response = await axios.get(`https://api.spotify.com/v1/artists/${id}/albums`, {
-    params: {
-        'include_groups': groups,
-        'limit': 50,
-    },
-    headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
+  const params = new URLSearchParams({
+    'include_groups': groups,
+    'limit': '50',
+  })
 
-  return response
+  const response = await fetch(`https://api.spotify.com/v1/artists/${id}/albums?${params}`, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+
+  return { status: response.status, data: await response.json() }
 }
