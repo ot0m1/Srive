@@ -64,6 +64,17 @@ Users can create playlists of singles, all songs including albums, etc. by simpl
 Enjoy!
 
 # To develop
+
+Copy `.env.local.example` to `.env.local` and fill in `CLIENT_ID` / `CLIENT_SECRET`
+from your app in the [Spotify developer dashboard](https://developer.spotify.com/dashboard).
+
+That app needs `http://127.0.0.1:3000/api/auth/callback/spotify` registered as a
+redirect URI. Spotify does not accept `localhost` as a redirect URI host — including
+entries registered before the 2025 rule change, which fail at authorize time with
+`INVALID_CLIENT: Insecure redirect URI`. So the loopback address has to be written
+as `127.0.0.1`, `NEXTAUTH_URL` has to match, and the app has to be opened at
+http://127.0.0.1:3000 rather than http://localhost:3000.
+
 ```bash
 git clone https://github.com/ot0m1/Srive.git
 cd srive
