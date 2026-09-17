@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   nextjs-app:
     build: .
@@ -8,4 +6,9 @@ services:
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
+    environment:
+      # A bind mount from the host does not deliver inotify events into the
+      # container, so next dev never sees an edit and silently serves stale
+      # code. Polling is the only thing that picks changes up here.
+      - WATCHPACK_POLLING=true
     command: npm run dev

@@ -7,7 +7,11 @@ import Profile from './profile'
 import Error from './error'
 import Loading from './loading'
 
-const Playlist: NextPage = () => {
+type Props = {
+  dedupe: boolean
+}
+
+const Playlist: NextPage<Props> = ({ dedupe }) => {
   const {tracks} = useContext(TracksContext)
   const [radioValue, setRadioValue] = useState('allsongs')
   const [currentArtistId, setArtistId] = useState(tracks.artist.id)
@@ -45,6 +49,7 @@ const Playlist: NextPage = () => {
     const playlist = await fetch(endpoint, options)
 
     if (playlist.status != 201) {
+      setLoading(false)
       setStatus(false)
       return
     }
@@ -58,10 +63,16 @@ const Playlist: NextPage = () => {
   }
 
   const addTracksToPlaylist = async (playListId: string) => {
+    const uris = await getEachTrack()
+
+    if (!uris) {
+      return
+    }
+
     const data = {
       token: token,
       playListId: playListId,
-      uris: await getEachTrack(),
+      uris: uris,
     }
 
     const JSONdata = JSON.stringify(data)
@@ -86,6 +97,7 @@ const Playlist: NextPage = () => {
       token: token,
       ids: ids(),
       artistId: currentArtistId,
+      dedupe: dedupe,
     }
   
     const JSONdata = JSON.stringify(data)
@@ -105,9 +117,9 @@ const Playlist: NextPage = () => {
       return
     }
 
-    const results = await response.json()
-    setLoading(false)
-    return results
+    // Adding the tracks still has to run, so the spinner stays up
+    // until createPlaylist is finished.
+    return await response.json()
   }
 
   const ids = () => {
@@ -136,14 +148,7 @@ const Playlist: NextPage = () => {
         break
       }
 
-      const chunk = <T extends any[]>(array: T, size: number) => {
-        return array.reduce(
-          (newArray, _, i) => (i % size ? newArray : [...newArray, array.slice(i, i + size)]),
-          [] as T[][]
-        )
-      }
-
-    return chunk(ids, 20)
+    return ids
   }
 
   const playlistName = (radioValue: string) => {
@@ -181,7 +186,7 @@ const Playlist: NextPage = () => {
       {'value': 'album', 'name': 'Albums only'},
       {'value': 'others', 'name': 'Others only'},
     ]
-    
+
     return (
       <div
         className="container mx-auto w-full md:max-w-[520px] text-center"
@@ -197,7 +202,7 @@ const Playlist: NextPage = () => {
                   type="radio"
                   name="list-type"
                   value={item.value} checked={item.value === radioValue}
-                  onChange={event => setRadioValue(event.target.value)} 
+                  onChange={event => setRadioValue(event.target.value)}
                   className="peer hidden"
                   id={item.value}
                   />
@@ -254,13 +259,6 @@ const Playlist: NextPage = () => {
         <span>No songs found. It is possible that it could be a public playlist.</span>
       }
     </p>
-    { (tracks.singles.length === 50 || tracks.albums.length === 50 || tracks.appearsOnAndCompilation.length === 50) ?
-      <p className="text-sm mt-1 mb-4 max-w-90% mx-auto text-center">
-        Due to API specifications, up to 50 copies of each can be added to the playlist.
-      </p>
-      :
-      <></>
-    }
     { hasSinglesOrAlbums() && <PlayListForm /> }
     { isLoading && <Loading />}
     { !isLoading && getPlayListUrl() != '' && currentArtistId === tracks.artist.id &&
