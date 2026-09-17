@@ -8,9 +8,10 @@ import { useSession } from 'next-auth/react'
 
 type Props = {
   artists: any
+  dedupe: boolean
 }
 
-const Results: NextPage<Props> = ({ artists }) => {
+const Results: NextPage<Props> = ({ artists, dedupe }) => {
   const [tracks, setTracks] = useState({
     'singles': [],
     'albums': [],
@@ -80,7 +81,7 @@ const Results: NextPage<Props> = ({ artists }) => {
                 })}
               </ul>
             </div>
-          {status && hasSpotifyInformations(tracks) && <Playlist />}
+          {status && hasSpotifyInformations(tracks) && <Playlist dedupe={dedupe} />}
         </TracksContext.Provider>
       }
       { !status && <Error />}
