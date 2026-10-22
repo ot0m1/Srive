@@ -10,7 +10,7 @@ const Header: NextPage = () => {
           name="description"
           content="It is very easy to create only singles or only albums playlists for Spotify artists."
         />
-        <meta property="og:url" content="https://srive.app" />
+        <meta property="og:url" content="https://srive.vercel.app" />
         <meta property="og:type" content="home" />
         <meta property="og:title" content="Top page of Srive" />
         <meta property="og:description" content="" />

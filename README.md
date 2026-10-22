@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://srive.app/">
+  <a href="https://srive.vercel.app/">
     <br><br>
     <img alt="Srive" src="https://user-images.githubusercontent.com/6190966/204440619-55f12b02-df13-4e6c-9b14-9597e9c91fd3.png" width="240">
     <br><br>
@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <a href="https://srive.app/">https://srive.app/</a>
+  <a href="https://srive.vercel.app/">https://srive.vercel.app/</a>
 </p>
 
 It is very easy to create only singles or only albums playlists for Spotify artists.
@@ -36,7 +36,7 @@ Users can create playlists of singles, all songs including albums, etc. by simpl
 
 ## Access srive
 
-[https://srive.app/](https://srive.app/)
+[https://srive.vercel.app/](https://srive.vercel.app/)
 ## Log in to Spotify
 
 ![Log In](https://user-images.githubusercontent.com/6190966/213918589-52580197-746a-4a09-a42b-f821c52b732e.png)
