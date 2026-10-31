@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "pages/api/tracks.ts": { "maxDuration": 60 },
+    "pages/api/eachTrack.ts": { "maxDuration": 60 },
+    "pages/api/addTracks.ts": { "maxDuration": 60 }
+  }
+}
